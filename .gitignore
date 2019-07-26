@@ -1,0 +1,9 @@
+.git/
+.idea/
+application/config
+application/logs
+application/cache
+application/bootstrap.php
+modules/profilertoolbar
+*.sql
+

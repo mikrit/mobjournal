@@ -1,0 +1,403 @@
+html
+{
+    position: relative;
+    min-height: 100%;
+}
+
+body
+{
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+#footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+body > .container
+{
+    padding: 60px 15px 0;
+}
+
+.container .text-muted
+{
+    margin: 20px 0;
+}
+
+#footer > .container
+{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/*------AuthForm---------*/
+
+
+
+.card-container.card {
+    max-width: 350px;
+    padding: 40px 40px;
+}
+
+.btn {
+    margin-bottom: 10px;
+}
+
+.card {
+    background-color: #F7F7F7;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 0 25px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.form-signin #login,
+.form-signin #email,
+.form-signin #password {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+
+.form-signin input[type=email],
+.form-signin input[type=password],
+.form-signin input[type=text],
+.form-signin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    border-color: rgb(109, 134, 162);
+}
+
+.btn .btn-primary {
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+
+.btn.btn-signin:hover,
+.btn.btn-signin:active,
+.btn.btn-signin:focus {
+    background-color: rgb(12, 97, 155);
+}
+
+.forgot-password {
+    color: rgb(104, 145, 162);
+}
+
+.forgot-password:hover,
+.forgot-password:active,
+.forgot-password:focus{
+    color: rgb(12, 97, 155);
+}
+
+/*--------------------*/
+
+.t-center{
+    margin:0 auto;
+    display:table;
+}
+
+table, tr, td{
+    border-spacing: 0px;
+}
+
+.right{
+    text-align: right;
+}
+
+.right img{
+    margin-top: 7px;
+}
+
+.bottom{
+    vertical-align: bottom;
+}
+
+.center{
+    text-align: center;
+}
+
+#edit{
+    float: right;
+    margin-right: 4px;
+    width: 100%;
+}
+
+#edit a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Page */
+#t_page{
+    height: 100%;
+    width: 100%;
+}
+
+#title{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+
+}
+
+#page{
+    width: 1000px;
+    margin: 0 auto;
+    padding: 30px 0;
+    height: 100%;
+}
+
+#proj{
+    width: 100%;
+    font-size: 15px;
+}
+
+#user{
+    width: 500px;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+.discription{
+    margin-top: 5px;
+    border-top: 1px solid #888;
+    text-align: justify;
+}
+
+#sub_mail{
+    vertical-align: top;
+    border-right: 1px solid #888;
+}
+
+#proj_task{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+#proj_task tr{
+    height: 40px;
+    text-align: center;
+}
+
+#proj_task td{
+    padding: 3px 6px;
+    border: 1px solid #D7D7D7;
+}
+
+#proj_task .theme{
+    text-align: left;
+    white-space: normal;
+}
+
+#proj_task .theme2{
+    color: red;
+    text-align: left;
+    white-space: normal;
+}
+
+#proj_task .right{
+    text-align: right;
+}
+
+#proj_task a{
+    text-decoration: none;
+    color: #666;
+}
+
+#proj_task img{
+    border: none;
+}
+
+#head_tasks{
+    background-color: #eee;
+}
+
+#head_tasks td{
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+}
+
+.right_t{
+    text-align: right;
+}
+
+.right_t img{
+    border: none;
+}
+
+#proj_task .right_t a{
+    color: #000;
+}
+
+#proj_task .right_t{
+    border-left-color: #fff;
+    border-right-color: #fff;
+    border-top-color: #fff;
+    border-bottom-color: #999;
+}
+
+#head_tasks a, #head_tasks a:link, #head_tasks a:visited{
+    color: #2A5685;
+    text-decoration: none;
+}
+
+#proj_task a:hover,  a:active, #edit a:hover{
+    color: #C61A1A;
+    text-decoration: underline;
+}
+
+.task_1{
+    background-color: #ffffff;
+}
+
+.task_2{
+    background-color: #F4Fcfc;
+}
+
+.task_1 img, .task_2 img{
+    cursor:pointer;
+    height: 32px;
+    width: 32px;
+}
+
+.hight{
+    color: red;
+}
+
+#proj_task tr:hover{
+    background-color: #F6F7c5;
+}
+
+#head_tasks tr:hover{
+    background-color: #eee
+}
+
+#pt{
+    float: left;
+    width: 68%;
+    border-right: 1px solid #888;
+    margin-bottom: 30px;
+}
+
+#ptt{
+    margin-right: 10px;
+}
+
+#add_files{
+    width: 30%;
+    float: left;
+    margin-left: 10px;
+}
+
+.file_dis{
+    border-top: 1px solid #999;
+    padding-top: 5px;
+}
+
+/*Form*/
+
+.t_form{
+    width: 100%;
+}
+
+.t_form_main{
+    width: 50%;
+}
+
+.t_form td .t_form_main td{
+    padding: 5px 10px;
+}
+
+.error{
+    color: red;
+}
+
+td.star{
+    width: 5px;
+    padding: 0;
+    text-align: right;
+}
+
+textarea, input.input, .date_input{
+    background: repeat-x scroll center top #FFF;
+    border: 1px solid #CCC;
+    font: 1em Verdana,Arial,Serif;
+    padding: 2px;
+    margin: 3px 0;
+    min-width: 250px;
+}
+
+button, input{
+    margin: 3px 0;
+}
+
+textarea:focus, input.input:focus, .date_input:focus{
+    background: repeat-x scroll center top #FFF;
+    border: 1px solid #999;
+}
+
+select{
+    border: 1px solid #ccc;
+    font: 1em Verdana, Arial, Serif;
+    margin: 5px 0;
+    padding: 2px;
+    width: 255px;
+}
+
+#stat{
+    margin:0 auto;
+    display:table;
+}
+
+
+.form-control2{
+    margin: 10px auto;
+    width: 90% !important;
+}
+
+.btn-block2{
+    margin: 10px auto;
+    width: 90% !important;
+}
+
+#username_stat_success, #username_stat_error,
+#email_stat_success, #email_stat_error,
+#password_confirm_stat_success, #password_confirm_stat_error
+{
+    display: none;
+    float: right;
+    margin: 6px 3px 0 0;
+}
