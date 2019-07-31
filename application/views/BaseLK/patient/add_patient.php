@@ -42,7 +42,7 @@
 				<td><?=Form::input('contacts', $data['contacts'], array('class' => 'form-control'));?></td>
 			</tr>
 			<tr>
-				<td>История болезни:</td>
+				<td>История болезни:&nbsp;</td>
 				<td><?=Form::input('history', $data['history'], array('class' => 'form-control'));?></td>
 			</tr>
 			<tr>
