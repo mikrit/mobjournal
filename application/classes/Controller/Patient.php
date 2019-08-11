@@ -247,7 +247,7 @@ class Controller_Patient extends Controller_BaseLK
 
 			$data = $_POST;
 
-			//var_dump($_POST);
+			//var_dump($_POST);die;
 
 			$post = Model_Number::validation_number($_POST);
 

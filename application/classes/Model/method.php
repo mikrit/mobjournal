@@ -6,6 +6,11 @@ class Model_Method extends ORM
 		'numbers'  => array(
 			'model'       => 'number',
 			'foreign_key' => 'method_id',
+		),
+		'types' => array(
+			'model'			=> 'type',
+			'through'		=> 'methods_types',
+			'foreign_key'	=> 'method_id',
 		)
 	);
 

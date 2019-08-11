@@ -1,31 +1,39 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
 
 <div class="t-center">
-    <div id="title">Добавление статуса гена</div>
+    <div id="title" style="width: 350px;">Добавление статуса гена</div>
 
     <?=Form::open('data/add_status/',array('method'=>'post'));?>
     <table class="t_form">
-        <?php if(count($errors)):?>
-            <?php foreach ($errors as $error):?>
+        <?php if(count($errors)){?>
+            <?php foreach ($errors as $error){?>
                 <tr>
-                    <td class="error" colspan="2"><?=$error?></td>
+                    <td class="error"><?=$error?></td>
                 </tr>
-            <?php endforeach;?>
-        <?php endif;?>
-        <tr><td colspan="2" style="color: green"><?=$message?></td></tr>
+            <?}?>
+        <?}?>
+        <tr><td style="color: green"><?=$message?></td></tr>
         <tr>
-            <td class="right" colspan="2">
+            <td class="right">
                 <div id="edit"><?=Html::anchor('data/list_statuses', 'Назад')?></div>
             </td>
         </tr>
-        <tr>
-            <td>Статус гена:</td><td><?=Form::input('status', $data['status'], array('class' => 'input'));?></td>
-        </tr>
 		<tr>
-			<td>Исследование:</td><td><?=Form::select('analysis_id', $analyzes, $data['analysis_id']);?></td>
+			<td>
+                <label>Исследование:</label>
+                <?=Form::select('analysis_id', $analyzes, $data['analysis_id'], array('class' => 'form-control'));?>
+            </td>
 		</tr>
         <tr>
-            <td class="right" colspan="2"><?=Form::input('submit', 'Добавить',array('id' => 'button', 'type'=>'submit'));?></td>
+            <td>
+                <label>Статус гена:</label>
+                <?=Form::input('status', $data['status'], array('class' => 'form-control'));?>
+            </td>
+        </tr>
+        <tr>
+            <td class="right">
+                <?=Form::input('submit', 'Добавить', array('id' => 'button', 'type'=>'submit', 'class' => 'btn btn-primary'));?>
+            </td>
         </tr>
     </table>
     <?=Form::close();?>

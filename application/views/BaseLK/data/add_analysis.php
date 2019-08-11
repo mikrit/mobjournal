@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
 
 <div class="t-center">
-    <div id="title" style="width: 350px;">Добавление вида анализа</div>
+    <div id="title" style="width: 350px;">Добавление исследования</div>
 
     <?=Form::open('data/add_analysis/', array('method'=>'post'));?>
         <table class="t_form">
@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>
-                    <label>Вид анализа:</label>
+                    <label>Исследование:</label>
                     <?=Form::input('title', $data['title'], array('class' => 'form-control'));?>
                 </td>
             </tr>

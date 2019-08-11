@@ -31,7 +31,7 @@
 			</tr>
 			<tr>
 				<td>Год рождения:</td>
-				<td><?=Form::input('year', $data['year'], array('class' => 'form-control'));?></td>
+				<td><?=Form::input('year', $data['year'], array('class' => 'form-control', 'pattern' => '\\d{4}'));?></td>
 			</tr>
 			<tr>
 				<td>Телефон:</td>

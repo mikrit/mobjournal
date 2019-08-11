@@ -1,9 +1,9 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
 
-<div id="title">Виды анализов</div>
+<div id="title">Исследования</div>
 
 <div id="edit">
-    <?=Html::anchor('data/add_analysis/', '+ Добавить новый вид')?>
+    <?=Html::anchor('data/add_analysis/', '+ Добавить новое исследование')?>
 </div>
 <table id="proj_task">
     <tr>
@@ -16,12 +16,12 @@
             №
         </td>
         <td>
-            Вид анализа
+	        Исследования
         </td>
     </tr>
 	<? $i=1;
 	foreach($data as $analysis){
-		$class = ($i%2==1)?'class="task_1"':'class="task_2"';?>
+		$class = ($i % 2 == 1) ? 'class="task_1"' : 'class="task_2"';?>
 		<tr <?=$class?>>
 			<td>
 				<?=$i++?>

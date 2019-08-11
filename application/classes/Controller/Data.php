@@ -2,181 +2,171 @@
 
 class Controller_Data extends Controller_BaseLK
 {
-    public function action_index()
-    {
-        $this->template->content = View::factory('BaseLK/data/index')->render();
-    }
+	public function action_index()
+	{
+		$this->template->content = View::factory('BaseLK/data/index')->render();
+	}
 
-    public function action_list_analyzes()
-    {
-        $view = View::factory('BaseLK/data/list_analyzes');
-        $view->data = ORM::factory('analysis')->find_all();
+	public function action_list_analyzes()
+	{
+		$view = View::factory('BaseLK/data/list_analyzes');
+		$view->data = ORM::factory('analysis')->find_all();
 
-        $this->template->content = $view->render();
-    }
+		$this->template->content = $view->render();
+	}
 
-    public function action_add_analysis()
-    {
-        $errors = array();
-        $message = "";
+	public function action_add_analysis()
+	{
+		$errors = array();
+		$message = "";
+		$data['title'] = '';
 
-        $data['title'] = '';
-
-        if ($_POST)
-        {
-            $post = Validation::factory($_POST)->rule('title', 'not_empty'); //Model_Analysis::validation_analysis($_POST);
-            $data = $_POST;
-
-            if (!$post->check())
-            {
-                $errors = $post->errors('projects/mes');
-            }
-            else
-            {
-            	$orm = ORM::factory('analysis');
-                $orm->values($_POST)->create($post);
-                
-                $this->redirect('data/list_analyzes');
-            }
-        }
-
-        $view = View::factory('BaseLK/data/add_analysis');
-
-        $view->data = $data;
-        $view->errors = $errors;
-        $view->message = $message;
-
-        $this->template->content = $view->render();
-    }
-
-    public function action_update_analysis()
-    {
-		$id = $this->request->param('id');
-        $orm = ORM::factory('analysis', $id);
-
-        if(!$orm->loaded())
-        {
-            $this->redirect('data/list_analyzes');
-        }
-        
-        $errors = array();
-        $message = "";
-        $data = $orm->as_array();
-
-        if ($_POST)
-        {
-            $post = Model_Analysis::validation_analysis($_POST);
+		if($_POST)
+		{
+			$post = Validation::factory($_POST)->rule('title', 'not_empty'); //Model_Analysis::validation_analysis($_POST);
 			$data = $_POST;
-            
-            if (!$post->check())
-            {
-                $errors = $post->errors('projects/mes');
-            }
-            else
-            {
-                $orm->values($_POST)->update($post);               
-                $message = "Анализа успешно обновлён";
-            }
-        }
 
-        $view = View::factory('BaseLK/data/update_analysis');
+			if(!$post->check())
+			{
+				$errors = $post->errors('projects/mes');
+			}
+			else
+			{
+				$orm = ORM::factory('analysis');
+				$orm->values($_POST)->create($post);
+				$this->redirect('data/list_analyzes');
+			}
+		}
 
-        $view->id = $orm->id;
-        $view->data = $data;
-        $view->errors = $errors;
-        $view->message = $message;
+		$view = View::factory('BaseLK/data/add_analysis');
+		$view->data = $data;
+		$view->errors = $errors;
+		$view->message = $message;
 
-        $this->template->content = $view->render();
-    }
-    
+		$this->template->content = $view->render();
+	}
+
+	public function action_update_analysis()
+	{
+		$id = $this->request->param('id');
+		$orm = ORM::factory('analysis', $id);
+
+		if(!$orm->loaded())
+		{
+			$this->redirect('data/list_analyzes');
+		}
+
+		$errors = array();
+		$message = "";
+		$data = $orm->as_array();
+
+		if($_POST)
+		{
+			$post = Model_Analysis::validation_analysis($_POST);
+			$data = $_POST;
+
+			if(!$post->check())
+			{
+				$errors = $post->errors('projects/mes');
+			}
+			else
+			{
+				$orm->values($_POST)->update($post);
+				$message = "Анализа успешно обновлён";
+			}
+		}
+
+		$view = View::factory('BaseLK/data/update_analysis');
+		$view->id = $orm->id;
+		$view->data = $data;
+		$view->errors = $errors;
+		$view->message = $message;
+
+		$this->template->content = $view->render();
+	}
+
 	public function action_list_statuses()
-    {
-        $view = View::factory('BaseLK/data/list_statuses');
-        $view->data = ORM::factory('status')->find_all();
+	{
+		$view = View::factory('BaseLK/data/list_statuses');
+		$view->data = ORM::factory('status')->find_all();
 
-        $this->template->content = $view->render();
-    }
+		$this->template->content = $view->render();
+	}
 
-    public function action_add_status()
-    {
-        $errors = array();
-        $message = "";
-
-        $data['status'] = '';
+	public function action_add_status()
+	{
+		$errors = array();
+		$message = "";
+		$data['status'] = '';
 		$data['analysis_id'] = 1;
-
 		$analyzes = Helper::get_list_orm('analysis', 'title');
 
-        if ($_POST)
-        {
-            $post = Validation::factory($_POST)->rule('status', 'not_empty');
-            $data = $_POST;
-
-            if (!$post->check())
-            {
-                $errors = $post->errors('projects/mes');
-            }
-            else
-            {
-            	$orm = ORM::factory('status');
-                $orm->values($_POST)->create($post);
-
-                $this->redirect('data/list_statuses');
-            }
-        }
-
-        $view = View::factory('BaseLK/data/add_status');
-
-        $view->data = $data;
-        $view->errors = $errors;
-        $view->message = $message;
-		$view->analyzes = $analyzes;
-
-        $this->template->content = $view->render();
-    }
-
-    public function action_update_status()
-    {
-		$id = $this->request->param('id');
-        $orm = ORM::factory('status', $id);
-
-        if(!$orm->loaded())
-        {
-            $this->redirect('data/list_statuses');
-        }
-        
-        $errors = array();
-        $message = "";
-        $data = $orm->as_array();
-
-		$analyzes = Helper::get_list_orm('analysis', 'title');
-
-        if ($_POST)
-        {
-            $post = Model_Status::validation_status($_POST);
+		if($_POST)
+		{
+			$post = Validation::factory($_POST)->rule('status', 'not_empty');
 			$data = $_POST;
-            
-            if (!$post->check())
-            {
-                $errors = $post->errors('projects/mes');
-            }
-            else
-            {
-                $orm->values($_POST)->update($post);               
-                $message = "Статус гена успешно обновлён";
-            }
-        }
 
-        $view = View::factory('BaseLK/data/update_status');
+			if(!$post->check())
+			{
+				$errors = $post->errors('projects/mes');
+			}
+			else
+			{
+				$orm = ORM::factory('status');
+				$orm->values($_POST)->create($post);
+				$this->redirect('data/list_statuses');
+			}
+		}
 
-        $view->id = $orm->id;
-        $view->data = $data;
-        $view->errors = $errors;
-        $view->message = $message;
+		$view = View::factory('BaseLK/data/add_status');
+		$view->data = $data;
+		$view->errors = $errors;
+		$view->message = $message;
 		$view->analyzes = $analyzes;
 
-        $this->template->content = $view->render();
-    }
+		$this->template->content = $view->render();
+	}
+
+	public function action_update_status()
+	{
+		$id = $this->request->param('id');
+		$orm = ORM::factory('status', $id);
+
+		if(!$orm->loaded())
+		{
+			$this->redirect('data/list_statuses');
+		}
+
+		$errors = array();
+		$message = "";
+		$data = $orm->as_array();
+		$analyzes = Helper::get_list_orm('analysis', 'title');
+
+		if($_POST)
+		{
+			$post = Model_Status::validation_status($_POST);
+			$data = $_POST;
+
+			if(!$post->check())
+			{
+				$errors = $post->errors('projects/mes');
+			}
+			else
+			{
+				$orm->values($_POST)->update($post);
+				$message = "Статус гена успешно обновлён";
+			}
+		}
+
+		$view = View::factory('BaseLK/data/update_status');
+		$view->id = $orm->id;
+		$view->data = $data;
+		$view->errors = $errors;
+		$view->message = $message;
+		$view->analyzes = $analyzes;
+
+		$this->template->content = $view->render();
+	}
 
 	public function action_list_methods()
 	{
@@ -190,15 +180,14 @@ class Controller_Data extends Controller_BaseLK
 	{
 		$errors = array();
 		$message = "";
-
 		$data['title'] = '';
 
-		if ($_POST)
+		if($_POST)
 		{
-			$post =  Validation::factory($_POST)->rule('title', 'not_empty');
+			$post = Validation::factory($_POST)->rule('title', 'not_empty');
 			$data = $_POST;
 
-			if (!$post->check())
+			if(!$post->check())
 			{
 				$errors = $post->errors('projects/mes');
 			}
@@ -206,13 +195,11 @@ class Controller_Data extends Controller_BaseLK
 			{
 				$orm = ORM::factory('method');
 				$orm->values($_POST)->create($post);
-
 				$this->redirect('data/list_methods');
 			}
 		}
 
 		$view = View::factory('BaseLK/data/add_method');
-
 		$view->data = $data;
 		$view->errors = $errors;
 		$view->message = $message;
@@ -234,12 +221,12 @@ class Controller_Data extends Controller_BaseLK
 		$message = "";
 		$data = $orm->as_array();
 
-		if ($_POST)
+		if($_POST)
 		{
 			$post = Model_Method::validation_method($_POST);
 			$data = $_POST;
 
-			if (!$post->check())
+			if(!$post->check())
 			{
 				$errors = $post->errors('projects/mes');
 			}
@@ -251,11 +238,43 @@ class Controller_Data extends Controller_BaseLK
 		}
 
 		$view = View::factory('BaseLK/data/update_method');
-
 		$view->id = $orm->id;
 		$view->data = $data;
 		$view->errors = $errors;
 		$view->message = $message;
+
+		$this->template->content = $view->render();
+	}
+
+	public function action_list_types()
+	{
+		$view = View::factory('BaseLK/data/list_types');
+		$view->data = ORM::factory('type')->find_all();
+
+		$this->template->content = $view->render();
+	}
+
+	public function action_update_types()
+	{
+		$id = $this->request->param('id');
+		$orm = ORM::factory('type', $id);
+
+		if(!$orm->loaded())
+		{
+			$this->redirect('data/list_types');
+		}
+
+		$errors = array();
+		$message = "";
+		$data = $orm->as_array();
+		$methods = Helper::get_list_orm('method', 'title');
+
+		$view = View::factory('BaseLK/data/update_types');
+		$view->id = $orm->id;
+		$view->data = $data;
+		$view->errors = $errors;
+		$view->message = $message;
+		$view->methods = $methods;
 
 		$this->template->content = $view->render();
 	}

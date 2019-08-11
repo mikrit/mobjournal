@@ -243,6 +243,7 @@ table, tr, td{
 
 #head_tasks{
     background-color: #eee;
+    font-weight: bold;
 }
 
 #head_tasks td{
@@ -259,7 +260,8 @@ table, tr, td{
 }
 
 #proj_task .right_t a{
-    color: #000;
+    color: #337ab7;
+    font-weight: bold;
 }
 
 #proj_task .right_t{
@@ -284,7 +286,7 @@ table, tr, td{
 }
 
 .task_2{
-    background-color: #F4Fcfc;
+    background-color: #f3f3f3;
 }
 
 .task_1 img, .task_2 img{
@@ -299,6 +301,14 @@ table, tr, td{
 
 #proj_task tr:hover{
     background-color: #F6F7c5;
+}
+
+#proj_task tr:first-child:hover{
+    background-color: #ffffff;
+}
+
+#proj_task tr:hover:nth-child(2){
+    background-color: #eee;
 }
 
 #head_tasks tr:hover{
