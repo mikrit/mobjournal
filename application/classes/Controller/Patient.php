@@ -353,9 +353,10 @@ class Controller_Patient extends Controller_BaseLK
 		$message = "";
 		$data2 = $data->as_array();
 
+		$types = Helper::get_list_orm('type', 'title');
+		$methods = Helper::get_list_orm('method', 'title');
 		$analyzes = Helper::get_list_orm('analysis', 'title');
 		$statuses = Helper::get_list_orm('status', 'status');
-		$methods = Helper::get_list_orm('method', 'title');
 
 		$sings = array(0 => '');
 		$orm = ORM::factory('user')->find_all();
@@ -453,9 +454,10 @@ class Controller_Patient extends Controller_BaseLK
 		$view->message = $message;
 		$view->data = $data2;
 		$view->id = $id;
+		$view->types = $types;
+		$view->methods = $methods;
 		$view->analyzes = $analyzes;
 		$view->statuses = $statuses;
-		$view->methods = $methods;
 		$view->sings = $sings;
 		$view->patient = $patient;
 
