@@ -171,7 +171,7 @@
 					</tr>
 				</thead>
 				<?$i=1;?>
-				<?foreach($numbers as $number){?>
+				<?foreach($numbers2 as $number){?>
 					<?$class = ($i % 2 == 1) ? 'class="task_1"' : 'class="task_2"';?>
 					<tr>
 						<th scope="row">
@@ -209,7 +209,7 @@
 				<?}?>
 			</table>
 
-			<div id="pages" class="center"><?=$page_list?></div>
+			<div id="pages" class="center"><?=$page_list2?></div>
 		</div>
 	</div>
 </div>

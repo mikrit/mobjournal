@@ -214,10 +214,11 @@ class Controller_Patient extends Controller_BaseLK
 		$errors = array();
 		$message = "";
 
+		$data['type_id'] = 1;
+		$data['method_id'] = 1;
 		$data['number_a'] = '';
 		$data['material_number'] = '';
 		$data['material_count'] = '';
-		$data['method_id'] = 1;
 		$data['comment'] = '';
 		$data['notes'] = '';
 		$data['user1_id'] = 0;
@@ -226,9 +227,10 @@ class Controller_Patient extends Controller_BaseLK
 		$data['status'] = 1;
 		$data['sms'] = 0;
 
+		$types = Helper::get_list_orm('type', 'title');
+		$methods = Helper::get_list_orm('method', 'title');
 		$analyzes = Helper::get_list_orm('analysis', 'title');
 		$statuses = Helper::get_list_orm('status', 'status');
-		$methods = Helper::get_list_orm('method', 'title');
 
 		$sings = array(0 => '');
 		$orm = ORM::factory('user')->find_all();
@@ -257,7 +259,7 @@ class Controller_Patient extends Controller_BaseLK
 			}
 			else
 			{
-				$orm_year = ORM::factory('year', 1);
+				$orm_year = ORM::factory('year', $data['type_id']);
 				$count = $orm_year->count;
 
 				if($orm_year->year != Date('Y'))
@@ -296,6 +298,7 @@ class Controller_Patient extends Controller_BaseLK
 		$view->message = $message;
 		$view->id = $id;
 		$view->data = $data;
+		$view->types = $types;
 		$view->analyzes = $analyzes;
 		$view->statuses = $statuses;
 		$view->methods = $methods;

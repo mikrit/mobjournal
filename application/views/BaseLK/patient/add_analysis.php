@@ -19,16 +19,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Номер анализа:</td>
-				<td colspan="2"><?=Form::input('number_a', $data['number_a'], array('class' => 'form-control'));?></td>
-			</tr>
-			<tr>
-				<td>Номер материала:</td>
-				<td colspan="2"><?=Form::input('material_number', $data['material_number'], array('class' => 'form-control'));?></td>
-			</tr>
-			<tr>
-				<td>Кол-во материала:</td>
-				<td colspan="2"><?=Form::input('material_count', $data['material_count'], array('class' => 'form-control'));?></td>
+				<td>Тип анализа:</td>
+				<td colspan="2"><?=Form::select('type_id', $types, $data['type_id'], array('class' => 'form-control'));?></td>
 			</tr>
 			<tr>
 				<td>Метод исследования:</td>
@@ -39,11 +31,11 @@
 			</tr>
 			<tr>
 				<?$i=0;foreach($analyzes as $k => $v){?>
-					<?$i++?>
-					<td>
-						<? echo Form::checkbox('analysis_'.$k, 1, $data['analysis_'.$k] == 0 ? false : true)." ".$v?>
-						<br/>
-						<?
+				<?$i++?>
+				<td>
+					<? echo Form::checkbox('analysis_'.$k, 1, $data['analysis_'.$k] == 0 ? false : true)." ".$v?>
+					<br/>
+					<?
 						$analysis = ORM::factory('analysis', $k);
 						$orm = $analysis->statuses->find_all();
 
@@ -53,13 +45,25 @@
 						}
 
 						echo Form::select('status_'.$k, $statuses, $data['status_'.$k]);
-						?>
-					</td>
-					<?if($i % 2 == 0){?>
-						</tr>
-						<tr>
-					<?}?>
+					?>
+				</td>
+				<?if($i % 2 == 0){?>
+			</tr>
+			<tr>
 				<?}?>
+				<?}?>
+			</tr>
+			<tr>
+				<td>Номер анализа:</td>
+				<td colspan="2"><?=Form::input('number_a', $data['number_a'], array('class' => 'form-control'));?></td>
+			</tr>
+			<tr>
+				<td>Номер материала:</td>
+				<td colspan="2"><?=Form::input('material_number', $data['material_number'], array('class' => 'form-control'));?></td>
+			</tr>
+			<tr>
+				<td>Кол-во материала:</td>
+				<td colspan="2"><?=Form::input('material_count', $data['material_count'], array('class' => 'form-control'));?></td>
 			</tr>
 			<tr>
 				<td>Развёрнутый диагноз:</td>

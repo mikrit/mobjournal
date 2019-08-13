@@ -21,6 +21,10 @@ class Model_Number extends ORM
 	);
 
 	protected $_belongs_to = array(
+		'type'	=> array(
+			'model'			=> 'type',
+			'foreign_key'	=> 'type_id',
+		),
 		'patient'	=> array(
 			'model'			=> 'patient',
 			'foreign_key'	=> 'patient_id',

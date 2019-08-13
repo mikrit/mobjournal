@@ -7,6 +7,11 @@ class Model_Type extends ORM
 			'model'			=> 'method',
 			'through'		=> 'methods_types',
 			'foreign_key'	=> 'type_id',
+		),
+		'numbers' => array(
+			'model'			=> 'number',
+			//'through'		=> 'methods_types',
+			'foreign_key'	=> 'type_id',
 		)
 	);
 }
