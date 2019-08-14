@@ -219,6 +219,7 @@ class Controller_Patient extends Controller_BaseLK
 		$data['number_a'] = '';
 		$data['material_number'] = '';
 		$data['material_count'] = '';
+		$data['payment'] = 0;
 		$data['comment'] = '';
 		$data['notes'] = '';
 		$data['user1_id'] = 0;
@@ -240,7 +241,6 @@ class Controller_Patient extends Controller_BaseLK
 
 		if($_POST)
 		{
-			$methods = Helper::get_list_orm_method('type', 'title', $_POST['type_id']);
 			$orm = ORM::factory('number');
 
 			$_POST['patient_id'] = $id;
@@ -271,6 +271,7 @@ class Controller_Patient extends Controller_BaseLK
 
 				$orm->values($_POST)->create($post);
 
+				$methods = Helper::get_list_orm('method', 'title');
 				foreach($methods as $k => $v)
 				{
 					if(isset($data['method_'.$k])){
@@ -367,7 +368,7 @@ class Controller_Patient extends Controller_BaseLK
 		$message = "";
 		$data2 = $data->as_array();
 
-		$methods = Helper::get_list_orm_method('type', 'title', $data->type_id);
+		$types = Helper::get_list_orm('type', 'title');
 		$analyzes = Helper::get_list_orm('analysis', 'title');
 		$statuses = Helper::get_list_orm('status', 'status');
 
@@ -402,6 +403,7 @@ class Controller_Patient extends Controller_BaseLK
 			{
 				$data->values($_POST)->update($post);
 
+				$methods = Helper::get_list_orm('method', 'title');
 				foreach($methods as $k => $v)
 				{
 					if(!isset($_POST['method_'.$k]))
@@ -459,6 +461,8 @@ class Controller_Patient extends Controller_BaseLK
 			}
 		}
 
+		$methods = Helper::get_list_orm_method('type', 'title', $data->type_id);
+
 		foreach($methods as $k => $v){
 			if(!isset($data2['method_'.$k]))
 			{
@@ -469,7 +473,6 @@ class Controller_Patient extends Controller_BaseLK
 				}
 			}
 		}
-
 
 		$stat = DB::select('status_id', 'analysis_id')
 					->from('analyzes_numbers')
@@ -503,6 +506,7 @@ class Controller_Patient extends Controller_BaseLK
 		$view->data = $data2;
 		$view->id = $id;
 		$view->type = $data->type->title;
+		$view->types = $types;
 		$view->methods = $methods;
 		$view->analyzes = $analyzes;
 		$view->statuses = $statuses;

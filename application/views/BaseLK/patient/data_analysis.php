@@ -109,6 +109,10 @@
 			<td style="height: 25px;">SMS:</td>
 			<td><b><?=$data->sms == NULL || $data->sms == 0 ? '' : 'Отправлено'?></b></td>
 		</tr>
+		<tr>
+			<td style="height: 25px;">Оплата:</td>
+			<td><b><?=$data->payment == 0 ? 'ОМС' : 'Платно'?></b></td>
+		</tr>
 	</table>
 	<br/><br/><br/>
 

@@ -34,7 +34,7 @@
 				<td>Кол-во материала:</td>
 				<td colspan="2"><?=Form::input('material_count', $data['material_count'], array('class' => 'form-control'));?></td>
 			</tr>
-			<tr style="border-bottom: solid 1px;">
+			<tr>
 				<td>Метод исследования:</td>
 				<td id="method_id" colspan="2">
 					<?foreach($methods as $method_id => $method){?>
@@ -43,6 +43,10 @@
 						</div>
 					<?}?>
 				</td>
+			</tr>
+			<tr>
+				<td>Оплата:</td>
+				<td colspan="2"><?=Form::select('payment', array(0 => 'ОМС', 1 => 'Платно'), $data['payment'], array('class' => 'form-control'));?></td>
 			</tr>
 			<tr>
 				<td rowspan="<?=ceil(count($analyzes)/2)+1?>">Исследования:</td>

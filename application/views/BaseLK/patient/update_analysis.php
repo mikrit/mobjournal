@@ -35,7 +35,7 @@
 		</tr>
 		<tr>
 			<td>Тип анализа:</td>
-			<td colspan="2"><b><?=$type?></b></td>
+			<td colspan="2"><?=Form::select('type_id', $types, $data['type_id'], array('id' => 'type_id', 'class' => 'form-control'));?></td>
 		</tr>
 		<tr>
 			<td>Номер анализа:</td>
@@ -49,7 +49,7 @@
 			<td>Кол-во материала:</td>
 			<td colspan="2"><?=Form::input('material_count', $data['material_count'], array('class' => 'form-control'));?></td>
 		</tr>
-		<tr style="border-bottom: solid 1px;">
+		<tr>
 			<td>Метод исследования:</td>
 			<td id="method_id" colspan="2">
 				<?foreach($methods as $method_id => $method){?>
@@ -58,6 +58,10 @@
 					</div>
 				<?}?>
 			</td>
+		</tr>
+		<tr>
+			<td>Оплата:</td>
+			<td colspan="2"><?=Form::select('payment', array(0 => 'ОМС', 1 => 'Платно'), $data['payment'], array('class' => 'form-control'));?></td>
 		</tr>
 		<tr>
 			<td rowspan="<?=ceil(count($analyzes)/2)+1?>">Исследования:</td>
@@ -146,5 +150,31 @@
 				return;
 			}
 		});
+	});
+
+	$('#type_id').change(function(){
+		var type_id = $(this).val();
+
+		$.ajax({
+			type: "POST",
+			url: '/ajax/change_type',
+			dataType: "json",
+			data: {
+				type_id: type_id
+			}
+		}).done(function(data)
+		{
+			if(data.error == 1)
+			{
+				$('#answer_e').html(data.res);
+				return false;
+			}
+			else
+			{
+				$('#method_id').html(data.methods);
+			}
+		});
+
+		return false;
 	});
 </script>

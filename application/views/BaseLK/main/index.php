@@ -10,6 +10,13 @@
 	.nav-tabs {
 		border-bottom: 0px solid #ddd;
 	}
+
+	.rub {
+		line-height: 5px;
+		width: 0.4em;
+		border-bottom: 1px solid #000;
+		display: inline-block;
+	}
 </style>
 
 <div class="col-lg-6">
@@ -91,6 +98,9 @@
 						<th>
 							Дата приёма
 						</th>
+						<th>
+							<span class="rub">Р</span>
+						</th>
 					</tr>
 				</thead>
 				<?$i=1;?>
@@ -126,6 +136,11 @@
 						</td>
 						<td>
 							<?=date('d.m.Y', $number->date_add)?>
+						</td>
+						<td>
+							<?if($number->payment == 1){?>
+								<span class="rub">Р</span>
+							<?}?>
 						</td>
 					</tr>
 					<?$i++;?>
@@ -168,6 +183,9 @@
 						<th>
 							Дата приёма
 						</th>
+						<th>
+							<span class="rub">Р</span>
+						</th>
 					</tr>
 				</thead>
 				<?$i=1;?>
@@ -203,6 +221,11 @@
 						</td>
 						<td>
 							<?=date('d.m.Y', $number->date_add)?>
+						</td>
+						<td>
+							<?if($number->payment == 1){?>
+								<span class="rub">Р</span>
+							<?}?>
 						</td>
 					</tr>
 					<?$i++;?>
