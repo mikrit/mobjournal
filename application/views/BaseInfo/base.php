@@ -35,7 +35,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button-->
-                    <?=Html::image('media/img/logo_4.png', array('width' => 50, 'height' => 50));?>
+	                <?=HTML::anchor('/', Html::image('media/img/logo_4.png', array('width' => 140, 'height' => 60)));?>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="collapse navbar-collapse">
