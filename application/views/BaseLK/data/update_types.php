@@ -26,13 +26,13 @@
 			</tr>
 			<tr>
 				<td>
-					<label>Статус гена:</label>
+					<label>Тип исследования:</label>
 					<?=Form::input('title', $data['title'], array('class' => 'form-control'));?>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label>Исследование:</label><br/>
+					<label>Методы исследования:</label><br/>
 					<?if(count($methods) == 0){?>
 						Нет ни одного "Метода исследования"
 					<?}?>
