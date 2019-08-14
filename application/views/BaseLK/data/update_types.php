@@ -33,6 +33,9 @@
 			<tr>
 				<td>
 					<label>Исследование:</label><br/>
+					<?if(count($methods) == 0){?>
+						Нет ни одного "Метода исследования"
+					<?}?>
 					<?foreach($methods as $method_id => $method){?>
 						<?=Form::checkbox('method_'.$method_id, 1, $data['method_'.$method_id] == 0 ? false : true)." ".$method?><br/>
 					<?}?>
