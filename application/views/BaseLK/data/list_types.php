@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
 
-<div id="title">Типы анализов</div>
+<div id="title">Типы исследований</div>
 
 <table id="proj_task">
 	<tr>
@@ -13,7 +13,7 @@
 			№
 		</td>
 		<td>
-			Тип анализа
+			Тип исследования
 		</td>
 		<td>
 			Методы исследований

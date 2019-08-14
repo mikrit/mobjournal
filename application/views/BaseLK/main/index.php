@@ -49,7 +49,7 @@
 <div class="row col-lg-12">
 	<ul class="nav nav-tabs">
 		<li class="active">
-			<a data-toggle="tab" href="#germ" aria-expanded="true">Герминоген</a>
+			<a data-toggle="tab" href="#germ" aria-expanded="true">Герминогенные</a>
 		</li>
 		<li>
 			<a data-toggle="tab" href="#somat" aria-expanded="false">Соматика</a>

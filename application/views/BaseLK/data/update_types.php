@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
 
 <div class="t-center">
-	<div id="title" style="width: 350px;">Обновить статус гена</div>
+	<div id="title" style="width: 350px;">Обновить тип исследования</div>
 
 	<?=Form::open('data/update_types/'.$id, array('method' => 'post'));?>
 		<table class="t_form">
