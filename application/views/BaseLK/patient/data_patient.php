@@ -126,7 +126,9 @@
 					<?=$number->material_count?>
 				</td>
 				<td>
-					<?=$number->method->title?>
+					<?foreach($number->methods->find_all() as $method){?>
+						<?=$method->title?><br/>
+					<?}?>
 				</td>
 				<td>
 					<?=$number->comment?>
