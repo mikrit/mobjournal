@@ -25,6 +25,18 @@ body > .container
     padding: 150px 15px 0;
 }
 
+.navbar-default .navbar-nav > li > a {
+    margin-top: 15px;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    margin-top: 15px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    margin-top: 15px;
+}
+
 .container .text-muted
 {
     margin: 20px 0;
