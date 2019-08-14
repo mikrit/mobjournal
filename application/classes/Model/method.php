@@ -5,6 +5,7 @@ class Model_Method extends ORM
 	protected $_has_many = array(
 		'numbers'  => array(
 			'model'       => 'number',
+			'through'     => 'methods_numbers',
 			'foreign_key' => 'method_id',
 		),
 		'types' => array(

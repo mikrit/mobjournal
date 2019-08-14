@@ -20,20 +20,22 @@
 			<tr>
 				<td class="right">
 					<div id="edit">
-						<?=Html::anchor('data/list_statuses', 'Назад')?>
+						<?=Html::anchor('data/list_types', 'Назад')?>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>Исследование:</label>
-					<?=Form::select('method_id', $methods, 0, array('class' => 'form-control'));?>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<label>Статус гена:</label>
 					<?=Form::input('title', $data['title'], array('class' => 'form-control'));?>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Исследование:</label><br/>
+					<?foreach($methods as $method_id => $method){?>
+						<?=Form::checkbox('method_'.$method_id, 1, $data['method_'.$method_id] == 0 ? false : true)." ".$method?><br/>
+					<?}?>
 				</td>
 			</tr>
 			<tr>

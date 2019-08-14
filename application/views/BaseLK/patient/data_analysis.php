@@ -29,6 +29,20 @@
 			<td><b><?=Html::anchor('patient/data_patient/'.$patient->id, $patient->fio)?></b></td>
 		</tr>
 		<tr>
+			<td style="height: 25px;">Тип исследования:</td>
+			<td><b><?=$data->type->title?></b></td>
+		</tr>
+		<tr>
+			<td style="height: 25px;">Метод исследования:</td>
+			<td>
+				<b>
+					<?foreach($data->methods->find_all() as $method){?>
+						<?=$method->title?><br/>
+					<?}?>
+				</b>
+			</td>
+		</tr>
+		<tr>
 			<td>Исследования:</td>
 			<td><b>
 					<?
@@ -62,10 +76,6 @@
 					?>
 				</b>
 			</td>
-		</tr>
-		<tr>
-			<td style="height: 25px;">Метод исследования:</td>
-			<td><b><?=$data->method->title?></b></td>
 		</tr>
 		<tr>
 			<td style="height: 25px;">Развёрнутый диагноз:</td>
@@ -103,12 +113,9 @@
 	<br/><br/><br/>
 
 	<b>
-		<?=Html::anchor('print/print_data/'.$data->id, 'Печать карточки пациента', array('onclick' => 'this.target="_blank";'))?>
-		<br/>
-		<?=Html::anchor('print/print_data2/'.$data->id, 'Печать карточки пациента 2', array('onclick' => 'this.target="_blank";'))?>
-		<br/>
-		<?=Html::anchor('print/print_data3/'.$data->id, 'Печать карточки пациента 3', array('onclick' => 'this.target="_blank";'))?>
-		<br/>
-		<?=Html::anchor('print/print_conclusion/'.$data->id, 'Печать заключения', array('onclick' => 'this.target="_blank";'))?>
+		<?Html::anchor('print/print_data/'.$data->id, 'Печать карточки пациента', array('onclick' => 'this.target="_blank";'))?>
+		<?Html::anchor('print/print_data2/'.$data->id, 'Печать карточки пациента 2', array('onclick' => 'this.target="_blank";'))?>
+		<?Html::anchor('print/print_data3/'.$data->id, 'Печать карточки пациента 3', array('onclick' => 'this.target="_blank";'))?>
+		<?Html::anchor('print/print_conclusion/'.$data->id, 'Печать заключения', array('onclick' => 'this.target="_blank";'))?>
 	</b>
 </div>

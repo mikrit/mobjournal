@@ -35,11 +35,17 @@
 		</tr>
 		<tr>
 			<td>Тип анализа:</td>
-			<td colspan="2"><?=Form::select('type_id', $types, $data['type_id'], array('class' => 'form-control'));?></td>
+			<td colspan="2"><b><?=$type?></b></td>
 		</tr>
-		<tr>
+		<tr style="border-bottom: solid 1px;">
 			<td>Метод исследования:</td>
-			<td colspan="2"><?=Form::select('method_id', $methods, $data['method_id'], array('class' => 'form-control'));?></td>
+			<td id="method_id" colspan="2">
+				<?foreach($methods as $method_id => $method){?>
+					<div class="checkbox">
+						<label><?=Form::checkbox('method_'.$method_id, 1, $data['method_'.$method_id] == 0 ? false : true)." ".$method?></label>
+					</div>
+				<?}?>
+			</td>
 		</tr>
 		<tr>
 			<td rowspan="<?=ceil(count($analyzes)/2)+1?>">Исследования:</td>

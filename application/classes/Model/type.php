@@ -14,4 +14,10 @@ class Model_Type extends ORM
 			'foreign_key'	=> 'type_id',
 		)
 	);
+
+	public static function validation_type($values)
+	{
+		return Validation::factory($values)
+			->rule('title', 'not_empty');
+	}
 }

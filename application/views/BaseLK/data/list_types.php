@@ -30,7 +30,9 @@
 				<?=Html::anchor('data/update_types/'.$type->id, $type->title)?>
 			</td>
 			<td>
-
+				<?foreach($type->methods->find_all() as $method){?>
+					<?=$method->title?><br/>
+				<?}?>
 			</td>
 		</tr>
 	<?}?>

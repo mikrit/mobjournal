@@ -153,4 +153,19 @@ class Controller_Ajax extends Controller
 			return;
 		}
 	}
+
+	public function action_change_type()
+	{
+		if(isset($_POST['type_id']))
+		{
+			$methodsL = Helper::get_list_orm_method('type', 'title', $_POST['type_id']);
+
+			$methods = '';
+			foreach($methodsL as $method_id => $method){
+				$methods .= '<div class="checkbox"><label>'.Form::checkbox('method_'.$method_id, 1, false)." ".$method.'</label></div>';
+			}
+		}
+
+		echo json_encode(array('error' => 0, 'methods' => $methods));
+	}
 }

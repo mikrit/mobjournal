@@ -37,6 +37,7 @@
                     </button-->
                     <?=Html::image('media/img/logo_4.png', array('width' => 140, 'height' => 60));?>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                <div style="margin-top: 5px;"></div>
                 </div>
                 <div class="collapse navbar-collapse">
                     <?=$menu?>

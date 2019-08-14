@@ -12,4 +12,16 @@ abstract class Kohana_Helper {
 
 		return $datas;
 	}
+
+	public static function get_list_orm_method($table, $column, $type_id){
+		$datas = array();
+		$types = ORM::factory($table, $type_id);
+		$methods = $types->methods->find_all();
+
+		foreach($methods as $val){
+			$datas[$val->id] = $val->$column;
+		}
+
+		return $datas;
+	}
 }

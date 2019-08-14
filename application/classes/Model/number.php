@@ -17,6 +17,11 @@ class Model_Number extends ORM
 			'model'			=> 'materials',
 			//'through'		=> 'materials',
 			'foreign_key'	=> 'number_id',
+		),
+		'methods' => array(
+			'model'			=> 'method',
+			'through'		=> 'methods_numbers',
+			'foreign_key'	=> 'number_id',
 		)
 	);
 
@@ -33,10 +38,6 @@ class Model_Number extends ORM
 			'model'			=> 'status',
 			'foreign_key'	=> 'status_id',
 		),
-		'method'	=> array(
-			'model'			=> 'method',
-			'foreign_key'	=> 'method_id',
-		),
 		'user1'		=> array(
 			'model'			=> 'User',
 			'foreign_key'	=> 'user1_id',
@@ -52,9 +53,9 @@ class Model_Number extends ORM
 	);
 
 	public static function validation_number($values)
-    {
-        return Validation::factory($values)
+	{
+		return Validation::factory($values)
 			->rule('number_a', 'not_empty')
 			->rule('material_number', 'max_length', array(':value', 30));
-    }
+	}
 }

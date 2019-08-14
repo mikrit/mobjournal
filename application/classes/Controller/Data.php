@@ -250,6 +250,7 @@ class Controller_Data extends Controller_BaseLK
 	{
 		$view = View::factory('BaseLK/data/list_types');
 		$view->data = ORM::factory('type')->find_all();
+		$view->methods = Helper::get_list_orm('method', 'title');
 
 		$this->template->content = $view->render();
 	}
@@ -257,21 +258,75 @@ class Controller_Data extends Controller_BaseLK
 	public function action_update_types()
 	{
 		$id = $this->request->param('id');
-		$orm = ORM::factory('type', $id);
+		$data = ORM::factory('type', $id);
 
-		if(!$orm->loaded())
+		if(!$data->loaded())
 		{
 			$this->redirect('data/list_types');
 		}
 
 		$errors = array();
 		$message = "";
-		$data = $orm->as_array();
+		$data2 = $data->as_array();
 		$methods = Helper::get_list_orm('method', 'title');
 
+		if ($_POST)
+		{
+			$post = Model_Type::validation_type($_POST);
+
+			$data2 = $_POST;
+
+			if (!$post->check())
+			{
+				$errors = $post->errors('projects/mes');
+			}
+			else
+			{
+				$data->values($_POST)->update($post);
+
+				foreach($methods as $k => $v){
+					if(!isset($_POST['method_'.$k]))
+					{
+						DB::delete('methods_types')
+							->where('type_id', '=', $id)
+							->and_where('method_id', '=', $k)
+							->execute();
+
+						$data2['method_'.$k] = 0;
+					}
+					else
+					{
+						if(!$data->has('methods', $k))
+						{
+							DB::insert('methods_types', array('method_id', 'type_id'))
+								->values(array($k, $id))
+								->execute();
+						}
+					}
+				}
+
+				$message = "Данные анализа успешно обновлёны";
+			}
+		}
+
+		foreach($methods as $k => $v)
+		{
+			if(!isset($data2['method_'.$k]))
+			{
+				if($data->has('methods', $k))
+				{
+					$data2['method_'.$k] = 1;
+				}
+				else
+				{
+					$data2['method_'.$k] = 0;
+				}
+			}
+		}
+
 		$view = View::factory('BaseLK/data/update_types');
-		$view->id = $orm->id;
-		$view->data = $data;
+		$view->id = $id;
+		$view->data = $data2;
 		$view->errors = $errors;
 		$view->message = $message;
 		$view->methods = $methods;

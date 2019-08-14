@@ -228,7 +228,6 @@ class Controller_Patient extends Controller_BaseLK
 		$data['sms'] = 0;
 
 		$types = Helper::get_list_orm('type', 'title');
-		$methods = Helper::get_list_orm('method', 'title');
 		$analyzes = Helper::get_list_orm('analysis', 'title');
 		$statuses = Helper::get_list_orm('status', 'status');
 
@@ -241,6 +240,7 @@ class Controller_Patient extends Controller_BaseLK
 
 		if($_POST)
 		{
+			$methods = Helper::get_list_orm_method('type', 'title', $_POST['type_id']);
 			$orm = ORM::factory('number');
 
 			$_POST['patient_id'] = $id;
@@ -248,8 +248,6 @@ class Controller_Patient extends Controller_BaseLK
 			$_POST['date_comment'] = time();
 
 			$data = $_POST;
-
-			//var_dump($_POST);die;
 
 			$post = Model_Number::validation_number($_POST);
 
@@ -273,7 +271,17 @@ class Controller_Patient extends Controller_BaseLK
 
 				$orm->values($_POST)->create($post);
 
-				foreach($analyzes as $k => $v){
+				foreach($methods as $k => $v)
+				{
+					if(isset($data['method_'.$k])){
+						DB::insert('methods_numbers', array('method_id', 'number_id'))
+							->values(array($k, $orm->id))
+							->execute();
+					}
+				}
+
+				foreach($analyzes as $k => $v)
+				{
 					if(isset($data['analysis_'.$k])){
 						DB::insert('analyzes_numbers', array('analysis_id', 'number_id', 'status_id'))
 							->values(array($k, $orm->id, $data['status_'.$k]))
@@ -282,6 +290,14 @@ class Controller_Patient extends Controller_BaseLK
 				}
 
 				$this->redirect('patient/data_analysis/'.$orm->id);
+			}
+		}
+
+		$methods = Helper::get_list_orm_method('type', 'title', 1);
+
+		foreach($methods as $k => $v){
+			if(!isset($data['method_'.$k])){
+				$data['method_'.$k] = 0;
 			}
 		}
 
@@ -321,7 +337,6 @@ class Controller_Patient extends Controller_BaseLK
 		$errors = array();
 		$message = "";
 		$statuses = Helper::get_list_orm('status', 'status');
-		$methods = Helper::get_list_orm('method', 'title');
 
 		$view = View::factory('BaseLK/patient/data_analysis');
 
@@ -331,7 +346,6 @@ class Controller_Patient extends Controller_BaseLK
 		$view->errors = $errors;
 		$view->message = $message;
 		$view->statuses = $statuses;
-		$view->methods = $methods;
 		$view->id = $id;
 
 		$this->template->content = $view->render();
@@ -353,8 +367,7 @@ class Controller_Patient extends Controller_BaseLK
 		$message = "";
 		$data2 = $data->as_array();
 
-		$types = Helper::get_list_orm('type', 'title');
-		$methods = Helper::get_list_orm('method', 'title');
+		$methods = Helper::get_list_orm_method('type', 'title', $data->type_id);
 		$analyzes = Helper::get_list_orm('analysis', 'title');
 		$statuses = Helper::get_list_orm('status', 'status');
 
@@ -389,7 +402,30 @@ class Controller_Patient extends Controller_BaseLK
 			{
 				$data->values($_POST)->update($post);
 
-				foreach($analyzes as $k => $v){
+				foreach($methods as $k => $v)
+				{
+					if(!isset($_POST['method_'.$k]))
+					{
+						DB::delete('methods_numbers')
+							->where('number_id', '=', $id)
+							->and_where('method_id', '=', $k)
+							->execute();
+
+						$data2['method_'.$k] = 0;
+					}
+					else
+					{
+						if(!$data->has('methods', $k))
+						{
+							DB::insert('methods_numbers', array('method_id', 'number_id'))
+								->values(array($k, $id))
+								->execute();
+						}
+					}
+				}
+
+				foreach($analyzes as $k => $v)
+				{
 					if(!isset($_POST['analysis_'.$k]))
 					{
 						DB::delete('analyzes_numbers')
@@ -423,6 +459,18 @@ class Controller_Patient extends Controller_BaseLK
 			}
 		}
 
+		foreach($methods as $k => $v){
+			if(!isset($data2['method_'.$k]))
+			{
+				if($data->has('methods', $k)){
+					$data2['method_'.$k] = 1;
+				}else{
+					$data2['method_'.$k] = 0;
+				}
+			}
+		}
+
+
 		$stat = DB::select('status_id', 'analysis_id')
 					->from('analyzes_numbers')
 					->where('number_id', '=', $id)
@@ -454,7 +502,7 @@ class Controller_Patient extends Controller_BaseLK
 		$view->message = $message;
 		$view->data = $data2;
 		$view->id = $id;
-		$view->types = $types;
+		$view->type = $data->type->title;
 		$view->methods = $methods;
 		$view->analyzes = $analyzes;
 		$view->statuses = $statuses;
