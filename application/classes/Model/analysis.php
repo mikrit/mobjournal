@@ -5,14 +5,15 @@ class Model_Analysis extends ORM
     protected $_has_many = array(
 		'numbers'  => array(
 			'model'       => 'number',
-			'through' => 'analyzes_numbers',
+			'through'     => 'analyzes_numbers',
 			'foreign_key' => 'analysis_id',
 		),
 		'statuses'  => array(
 			'model'       => 'status',
+			'through'     => 'analyzes_numbers',
 			'foreign_key' => 'analysis_id',
 		)
-    );
+	);
 
     public static function validation_analysis($values)
     {

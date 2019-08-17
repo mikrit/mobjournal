@@ -80,8 +80,7 @@ class Controller_Print extends Controller_Template
 		$view = View::factory('BaseLK/print/print_conclusion');
 
 		$view->data = $data;
-		$view->analizis = $data->analyzes->find_all()->as_array();
-		$view->analizis_count = $data->analyzes->count_all();
+		$view->analizis = $data->analyzes->find_all();
 
 		$this->template->content = $view->render();
 	}

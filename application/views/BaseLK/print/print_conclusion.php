@@ -2,34 +2,25 @@
 
 <table id="table_print_top">
 	<tr>
-		<td width="10%">
-			<?=HTML::image('media/img/logo_4.png', array('id' => 'print_img2'))?>
+		<td width="50%">
+			<?=HTML::image('media/img/logo_4.png', array('id' => 'print_img2'))?><br/>
+			Молекулярно<br/>
+			Биологичкская<br/>
+			Лаборатория
 		</td>
 		<td width="50%">
-			ООО «КОД-МЕД-БИО»<br/>
 			г.Москва, Каширское шоссе д.23<br/>
-			ФГБУ "НМИЦ онкологии им. Н.Н.Блохина", зона Б-5
-		</td>
-		<td width="40%">
-			Часы приема пациентов:<br/>
-			Пн.-Чт.: с 10.00 до 16.00<br/>
-			Пт.: с 10.00 до 15.00<br/>
-			<b>Тел. 8(499) 324-17-49</b><br/>
-			e-mail: labgenpat@mail.ru
+			ФГБУ "НМИЦ онкологии им. Н.Н.Блохина", зона Б-5<br/>
+			<b>Тел. 8(499) ???-??-??</b><br/>
+			e-mail: info@molbiolab.ru
 		</td>
 	</tr>
 </table>
 
-<table class="table_print" style="border-bottom: 1px solid #000" border="0">
+<table class="table_print" style="border: 1px solid #000" border="0">
 	<tr>
 		<td>
-			Исследования:<br/><b><?
-				for($i=0; $i < $analizis_count-1; $i++)
-				{
-					echo $analizis[$i]->title.", ";
-				}
-				echo $analizis[$i]->title;
-				?></b>
+			ФИО: <b><?=$data->patient->fio?></b>
 		</td>
 		<td>
 			№ Исследования: <b><?=$data->number_a?></b>
@@ -37,66 +28,59 @@
 	</tr>
 	<tr>
 		<td>
-			ФИО: <b><?=$data->patient->fio?></b>
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Пол: <?=$data->patient->sex==0?'Mужской':'Женский'?>
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Год рождения: <?=$data->patient->year?>
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			История болезни: <b><?=$data->patient->history?></b>
+			Пол: <b><?=$data->patient->sex==0?'Mужской':'Женский'?></b> Год рождения: <b><?=$data->patient->year?></b>
 		</td>
 		<td>
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2">
-			Клинический диагноз: <b><?=$data->patient->diagnosis?></b>
+			Диагноз: <b><?=$data->patient->diagnosis?></b>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			№ гистологии: <?=$data->material_number?>
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Предоставленный материал: <?=$data->material_count?>
+			Материал: <?=$data->material_count?>
 		</td>
 		<td>
 		</td>
 	</tr>
 </table>
 
-<table class="table_print" border="0">
+<table class="table_print">
 	<tr>
 		<td>
-			Метод: <?=$data->method->title?>
+			Методы:
+		</td>
+		<td>
+			<?foreach($data->methods->find_all() as $method){?>
+				<b><?=$method->title?></b><br/>
+			<?}?>
 		</td>
 	</tr>
+</table>
+
+<table class="table_print" style="border-collapse: collapse; border: 1px solid #000">
 	<tr>
-		<td style="text-align: center;">
-			<b>Заключение</b>
-		</td>
+		<th style="border: 1px solid #000;">Ген</th>
+		<th style="border: 1px solid #000;">Статус</th>
+	</tr>
+	<?foreach($analizis as $analisis){?>
+		<tr>
+			<td style="border: 1px solid #000;"><?=$analisis->title?></td>
+			<td style="border: 1px solid #000;"><?=$analisis->statuses->status?></td>
+		</tr>
+	<?}?>
+</table>
+
+<table class="table_print" style="border-collapse: collapse; border: 1px solid #000">
+	<tr>
+		<th style="text-align: center; border: 1px solid #000;">
+			<b>Комментарии к иссдованию</b>
+		</th>
 	</tr>
 	<tr>
-		<td style="font-size: 14pt">
+		<td style="font-size: 14pt; border: 1px solid #000;">
 			<?=$data->comment?>
 		</td>
 	</tr>
@@ -132,7 +116,7 @@
 </table>
 
 <script type="text/javascript">
-	var is_chrome = function () { return Boolean(window.chrome); }
+	/*var is_chrome = function () { return Boolean(window.chrome); }
 	if(is_chrome) 
 	{
 		window.print();
@@ -146,5 +130,5 @@
 		window.print();
 		self.close();
 		});
-	}
+	}*/
 </script>
