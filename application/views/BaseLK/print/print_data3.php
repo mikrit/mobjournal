@@ -190,10 +190,6 @@
 				Отделение: <b><?=$data->patient->department?></b>
 			</td>
 			<td>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
 				Диагноз: <b><?=$data->patient->diagnosis?></b>
 			</td>
 		</tr>
