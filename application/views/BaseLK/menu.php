@@ -31,6 +31,6 @@
 		<?=HTML::anchor('auth/logout', 'Выход');?>
 	</li>
 	<li>
-		<div id="balance" style="display: block;padding-top: 30px;"><b>Баланс: <?=$balance?></b></div>
+		<!--div id="balance" style="display: block;padding-top: 30px;"><b>Баланс: <?=$balance?></b></div-->
 	</li>
 </ul>

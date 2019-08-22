@@ -11,7 +11,7 @@
 			<br/>
 			<?=Html::anchor('data/list_analyzes', 'Исследования');?>
 			<br/>
-			<?=Html::anchor('data/list_statuses', 'Стутус гена');?>
+			<?=Html::anchor('data/list_statuses', 'Статус гена');?>
 			<br/>
 		</td>
 	</tr>

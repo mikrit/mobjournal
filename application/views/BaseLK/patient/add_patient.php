@@ -16,11 +16,11 @@
 			<?php endif;?>
 
 			<tr><td colspan="2" style="color: green"><?=$message?></td></tr>
-			<!--tr>
-			<td class="right" colspan="2">
-			<div id="edit"><?=Html::anchor('patient', 'Назад')?></div>
-			</td>
-			</tr-->
+			<tr>
+				<td class="right" colspan="2">
+					<div id="edit"><?=Html::anchor('patient', 'Назад')?></div>
+				</td>
+			</tr>
 			<tr>
 				<td>ФИО:</td>
 				<td><?=Form::input('fio', $data['fio'], array('class' => 'form-control'));?></td>

@@ -6,7 +6,7 @@
 	<div id="answer_e" class="error"></div>
 	<div id="answer" style="color: green"></div>
 
-	<?=$data['sms'] == NULL || $data['sms'] == 0 ? '' : '<div style="color: green"><b>SMS Отправлено</b></div>'?>
+	<?$data['sms'] == NULL || $data['sms'] == 0 ? '' : '<div style="color: green"><b>SMS Отправлено</b></div>'?>
 
 	<?=Form::open('patient/update_analysis/'.$id, array('method'=>'post'));?>
 	<table class="t_form">
@@ -30,7 +30,7 @@
 		<tr>
 			<td class="right" colspan="3">
 				<?=Form::input('submit', 'Обновить',array('id' => 'button', 'type'=>'submit', 'class' => 'btn btn-primary'));?>
-				<?=Form::input('sms', 'Отправить SMS',array('id' => 'sms', 'type'=>'button', 'class' => 'btn btn-success'));?>
+				<?Form::input('sms', 'Отправить SMS',array('id' => 'sms', 'type'=>'button', 'class' => 'btn btn-success'));?>
 			</td>
 		</tr>
 		<tr>
@@ -113,7 +113,7 @@
 		<tr>
 			<td class="right" colspan="3">
 				<?=Form::input('submit', 'Обновить',array('id' => 'button', 'type'=>'submit', 'class' => 'btn btn-primary'));?>
-				<?=Form::input('sms', 'Отправить SMS',array('id' => 'sms_2', 'type'=>'button', 'class' => 'btn btn-success'));?>
+				<?Form::input('sms', 'Отправить SMS',array('id' => 'sms_2', 'type'=>'button', 'class' => 'btn btn-success'));?>
 			</td>
 		</tr>
 	</table>
