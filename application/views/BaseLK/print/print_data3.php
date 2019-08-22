@@ -6,12 +6,16 @@
 			<div style="float: left; margin-right: 10px;">
 				<?=HTML::image('media/img/logo_4.png', array('id' => 'print_img2'))?>
 			</div>
-			<div style="font-size: 18px; padding-bottom: 25px;">МОЛБИОЛАБ</div>
+			<div style="font-size: 18px; padding-bottom: 25px;">
+				Молекулярно<br/>
+				Биологичкская<br/>
+				Лаборатория
+			</div>
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2">
-			Каширское шоссе д 23.<br/><br/>
+			г.Москва, Каширское шоссе д. 23, каб. 2193<br/><br/>
 		</td>
 	</tr>
 	<tr>
@@ -23,7 +27,7 @@
 		<td width="40%">
 			e-mail: info@molbiolab.ru<br/><br/>
 			сайт: molbiolab.ru<br/><br/>
-			тел.: <b>8(499) ???-??-??</b><br/>
+			тел.: <b>8(499) 324-11-54</b><br/>
 		</td>
 	</tr>
 	<tr>

@@ -8,6 +8,11 @@ class Model_Analysis extends ORM
 			'through'     => 'analyzes_numbers',
 			'foreign_key' => 'analysis_id',
 		),
+		'statuses2'  => array(
+			'model'       => 'status',
+			//'through'     => 'analyzes_numbers',
+			'foreign_key' => 'analysis_id',
+		),
 		'statuses'  => array(
 			'model'       => 'status',
 			'through'     => 'analyzes_numbers',

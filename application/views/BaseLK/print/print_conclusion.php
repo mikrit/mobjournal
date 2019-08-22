@@ -2,8 +2,10 @@
 
 <table id="table_print_top">
 	<tr>
-		<td width="50%">
-			<?=HTML::image('media/img/logo_4.png', array('id' => 'print_img2'))?><br/>
+		<td width="15%">
+			<?=HTML::image('media/img/logo_4.png', array('id' => 'print_img2'))?>
+		</td>
+		<td width="35%" style="text-align: left">
 			Молекулярно<br/>
 			Биологичкская<br/>
 			Лаборатория
@@ -11,7 +13,7 @@
 		<td width="50%">
 			г.Москва, Каширское шоссе д.23<br/>
 			ФГБУ "НМИЦ онкологии им. Н.Н.Блохина", зона Б-5<br/>
-			<b>Тел. 8(499) ???-??-??</b><br/>
+			<b>Тел. 8(499) 324-11-54</b><br/>
 			e-mail: info@molbiolab.ru
 		</td>
 	</tr>
@@ -28,21 +30,18 @@
 	</tr>
 	<tr>
 		<td>
-			Пол: <b><?=$data->patient->sex==0?'Mужской':'Женский'?></b> Год рождения: <b><?=$data->patient->year?></b>
+			Пол: <b><?=$data->patient->sex==0?'Mужской':'Женский'?></b>
 		</td>
 		<td>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
 			Диагноз: <b><?=$data->patient->diagnosis?></b>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			Материал: <?=$data->material_count?>
+			Год рождения: <b><?=$data->patient->year?></b>
 		</td>
 		<td>
+			Материал: <?=$data->material_count?>
 		</td>
 	</tr>
 </table>
@@ -62,26 +61,39 @@
 
 <table class="table_print" style="border-collapse: collapse; border: 1px solid #000">
 	<tr>
-		<th style="border: 1px solid #000;">Ген</th>
-		<th style="border: 1px solid #000;">Статус</th>
+		<th width="50%" style="border: 1px solid #000;">Исследование</th>
+		<th width="50%" style="border: 1px solid #000;">Статус</th>
 	</tr>
 	<?foreach($analizis as $analisis){?>
 		<tr>
 			<td style="border: 1px solid #000;"><?=$analisis->title?></td>
-			<td style="border: 1px solid #000;"><?=$analisis->statuses->status?></td>
+			<td style="border: 1px solid #000;"><?=$analisis->statuses->where('number_id', '=', $number_id)->find()->status?></td>
 		</tr>
 	<?}?>
 </table>
 
 <table class="table_print" style="border-collapse: collapse; border: 1px solid #000">
 	<tr>
-		<th style="text-align: center; border: 1px solid #000;">
-			<b>Комментарии к иссдованию</b>
+		<th style="text-align: left; border: 1px solid #000;">
+			<b>Заключение исследования</b>
 		</th>
 	</tr>
 	<tr>
 		<td style="font-size: 14pt; border: 1px solid #000;">
 			<?=$data->comment?>
+		</td>
+	</tr>
+</table>
+
+<table class="table_print" style="border-collapse: collapse; border: 1px solid #000">
+	<tr>
+		<th style="text-align: left; border: 1px solid #000;">
+			<b>Комментарии к исследованию</b>
+		</th>
+	</tr>
+	<tr>
+		<td style="font-size: 14pt; border: 1px solid #000;">
+			<?=$data->notes?>
 		</td>
 	</tr>
 </table>

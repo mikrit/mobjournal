@@ -81,6 +81,7 @@ class Controller_Print extends Controller_Template
 
 		$view->data = $data;
 		$view->analizis = $data->analyzes->find_all();
+		$view->number_id = $id;
 
 		$this->template->content = $view->render();
 	}
