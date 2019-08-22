@@ -166,15 +166,6 @@
 				Пол: <b><?=$data->patient->sex==0?'Mужской':'Женский'?></b>
 			</td>
 			<td>
-				Исследования: <b>
-					<?
-					for($i=0; $i < $analizis_count-1; $i++)
-					{
-						echo $analizis[$i]->title.", ";
-					}
-					echo $analizis[$i]->title;
-					?>
-				</b>
 			</td>
 		</tr>
 		<tr>
@@ -182,7 +173,13 @@
 				Год рождения: <b><?=$data->patient->year?></b>
 			</td>
 			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>
 				История болезни: <b><?=$data->patient->history?></b>
+			</td>
+			<td>
 			</td>
 		</tr>
 		<tr>
@@ -190,7 +187,28 @@
 				Отделение: <b><?=$data->patient->department?></b>
 			</td>
 			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Исследования: <b>
+				<?
+				for($i=0; $i < $analizis_count-1; $i++)
+				{
+					echo $analizis[$i]->title.", ";
+				}
+				echo $analizis[$i]->title;
+				?>
+			</b>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>
 				Диагноз: <b><?=$data->patient->diagnosis?></b>
+			</td>
+			<td>
 			</td>
 		</tr>
 		<tr>
