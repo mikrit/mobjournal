@@ -33,7 +33,7 @@
 			Пол: <b><?=$data->patient->sex==0?'Mужской':'Женский'?></b>
 		</td>
 		<td>
-			Диагноз: <b><?=$data->patient->diagnosis?></b>
+			Материал: <?=$data->material_count?>
 		</td>
 	</tr>
 	<tr>
@@ -41,7 +41,7 @@
 			Год рождения: <b><?=$data->patient->year?></b>
 		</td>
 		<td>
-			Материал: <?=$data->material_count?>
+			Диагноз: <b><?=$data->patient->diagnosis?></b>
 		</td>
 	</tr>
 </table>
