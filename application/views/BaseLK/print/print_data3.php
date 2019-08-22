@@ -156,11 +156,15 @@
 	<table class="table_print">
 		<tr>
 			<td>
+				ФИО: <b><?=$data->patient->fio?></b>
 			</td>
 			<td>
 				№ Исследования: <b><?=$data->number_a?></b>
 			</td>
 		</tr><tr>
+			<td>
+				Пол: <b><?=$data->patient->sex==0?'Mужской':'Женский'?></b>
+			</td>
 			<td>
 				Исследования: <b>
 					<?
@@ -172,29 +176,13 @@
 					?>
 				</b>
 			</td>
-			<td>
-			</td>
 		</tr>
 		<tr>
-			<td>
-				ФИО: <b><?=$data->patient->fio?></b>
-			</td>
-			<td>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Пол: <b><?=$data->patient->sex==0?'Mужской':'Женский'?></b>
-			</td>
 			<td>
 				Год рождения: <b><?=$data->patient->year?></b>
 			</td>
-		</tr>
-		<tr>
 			<td>
 				История болезни: <b><?=$data->patient->history?></b>
-			</td>
-			<td>
 			</td>
 		</tr>
 		<tr>
