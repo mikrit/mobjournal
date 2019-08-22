@@ -90,7 +90,9 @@
 			<div style="float: left; margin-right: 10px;">
 				<?=HTML::image('media/img/logo_4.png', array('id' => 'print_img_'))?>
 			</div>
-
+			<br/>
+			<br/>
+			<br/>
 			ФИО пациента: <b><?=$data->patient->fio?></b><br/>
 			№ исследования: <b><?=$data->number_a?></b><br/>
 			№ материала: <?=$data->material_number?><br/>
