@@ -1,5 +1,18 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
 
+<style>
+	#table_sum {
+		border-collapse: collapse;
+		border: 1px solid #000;
+		width: 100%;
+	}
+	#table_sum th, #table_sum td{
+		border: 1px solid #000;
+		padding-bottom: 0px!important;
+		height: 32px;
+	}
+</style>
+
 <table class="table_print">
 	<tr>
 		<td colspan="2">
@@ -122,34 +135,44 @@
 		<td width="1%" style="border-left: 1px dashed;"></td>
 		<td width="50%" align="left" rowspan="2" id="left_row">
 			<br/>
-			<div style="text-align: center;">ФГБУ «НМИЦ онкологии<br/>им. Н.Н. Блохина» Минздрава России</div>
-			<br/>
-			ФИО пациента: <b><?=$data->patient->fio?></b>
+				Молекулярно<br/>
+				Биологичкская<br/>
+				Лаборатория
+
 			<br/>
 			<br/>
 
-			Исследование: <b>
-				<?
-				for($i=0; $i < $analizis_count-1; $i++)
-				{
-					echo $analizis[$i]->title.", ";
-				}
-				if(isset($analizis[$i]))
-				{
-					echo $analizis[$i]->title;
-				}
-				?></b>
-			<br/><br/>
+			ФИО пациента: <b><?=$data->patient->fio?></b>
+
+			<br/>
+			<br/>
 
 			№ исследования: <b><?=$data->number_a?></b>
 			<br/>
-
-			<br/>
-			Сумма: ___________________
 			<br/>
 
-			<br/>
-			Код услуги: _______________
+			<table id="table_sum">
+				<tr>
+					<th width="50%">Код услуги</th>
+					<th width="50%">Сумма</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><b>Итого</b></td>
+					<td></td>
+				</tr>
+			</table>
 		</td>
 	</tr>
 </table>
