@@ -103,6 +103,10 @@
 </div>
 
 <script>
+	$('#button').click(function(){
+		$(this).disabled();
+	});
+
 	$('#type_id').change(function(){
 		var type_id = $(this).val();
 

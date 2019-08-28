@@ -54,8 +54,14 @@
 				<td><?=Form::textarea('diagnosis', $data['diagnosis'], array('class' => 'form-control', 'id' => 'notes'));?></td>
 			</tr>
 			<tr>
-				<td class="right" colspan="2"><?=Form::input('submit', 'Добавить',array('class' => 'btn btn-primary', 'id' => 'button', 'type'=>'submit'));?></td>
+				<td class="right" colspan="2"><?=Form::input('submit', 'Добавить',array('id' => 'button', 'class' => 'btn btn-primary', 'type'=>'submit'));?></td>
 			</tr>
 		</table>
 	<?=Form::close();?>
 </div>
+
+<script>
+	$('#button').click(function(){
+		$(this).disabled();
+	});
+</script>
