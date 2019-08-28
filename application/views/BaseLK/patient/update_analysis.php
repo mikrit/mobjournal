@@ -124,7 +124,7 @@
 	$('#sms, #sms_2').click(function()
 	{
 		console.log(111);
-		$(this).disabled();
+		$(this).disabled = true;
 		console.log(234);
 		var user_id = <?=$patient->id?>;
 		var num_id = <?=$id?>;
