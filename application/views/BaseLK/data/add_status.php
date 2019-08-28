@@ -38,3 +38,9 @@
     </table>
     <?=Form::close();?>
 </div>
+
+<script>
+	$('#button').click(function(){
+		$(this).disabled();
+	});
+</script>
