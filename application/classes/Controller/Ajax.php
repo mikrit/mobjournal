@@ -101,50 +101,46 @@ class Controller_Ajax extends Controller
 	{
 		$patient = ORM::factory('number', $_POST['num_id']);
 
-		$login = 'email';
-		$password = 'password';
+		$login = 'sms@molbiolab.ru';
+		$password = '0eVICWBTgXVqPTLns6ZapZIngtsK';
 
 		$user = ORM::factory('patient', $_POST['user_id']);
 		preg_match_all('/\d+/', $user->phone, $str);
 
 		if(isset($str[0][0]) && isset($str[0][1]) && isset($str[0][2]) && isset($str[0][3]))
 		{
-			/*$tel = $str[0][0].$str[0][1].$str[0][2].$str[0][3];
+			$tel = $str[0][0].$str[0][1].$str[0][2].$str[0][3];
 
 			$number = ORM::factory('number', $_POST['num_id']);
 			$num = $number->number_a;
 			$sms = 'Исследование №'.$num.' готово';
-
 			$who = 'molbiolab';
 
-			$text = 'https://gate.smsaero.ru/send/?user='.$login.'&password='.$password.'&to='.$tel.'&text='.$sms.'&from='.$who;
-
-			$request = Request::factory($text);
-
-			$request->client()->options(array(
-				CURLOPT_SSL_VERIFYPEER => FALSE
-			));
-			$request->execute()->body();
-
-			$url = 'https://gate.smsaero.ru/v2/balance';
-
+			$url = 'https://gate.smsaero.ru/v2/sms/send?number='.$tel.'&text='.$sms.'&sign='.$who.'&channel=DIRECT';
 			$request = Request::factory($url);
 
 			$request->client()->options(array(
 				CURLOPT_SSL_VERIFYPEER => FALSE,
-				CURLOPT_USERPWD => "email:password"
+				CURLOPT_USERPWD => "sms@molbiolab.ru:0eVICWBTgXVqPTLns6ZapZIngtsK"
+			));
+			$request->execute()->body();
+
+			$url = 'https://gate.smsaero.ru/v2/balance';
+			$request = Request::factory($url);
+
+			$request->client()->options(array(
+				CURLOPT_SSL_VERIFYPEER => FALSE,
+				CURLOPT_USERPWD => "sms@molbiolab.ru:0eVICWBTgXVqPTLns6ZapZIngtsK"
 			));
 			$answer = $request->execute()->body();
 
-			$answer = '';
 			$balance = json_decode($answer)->data->balance;
 
 			$patient->sms = 1;
-			$patient->save();*/
+			$patient->save();
 
-			$balance = '0';
 			header('Content-Type: text/json; charset=utf-8');
-			echo json_encode(array('error' => 0, 'res' => 'Сообщение не отправлено', 'balance' => $balance));
+			echo json_encode(array('error' => 0, 'res' => 'Сообщение отправлено', 'balance' => $balance));
 			return;
 		}
 		else

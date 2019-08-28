@@ -30,7 +30,7 @@
 		<tr>
 			<td class="right" colspan="3">
 				<?=Form::input('submit', 'Обновить',array('id' => 'button', 'type'=>'submit', 'class' => 'btn btn-primary'));?>
-				<?Form::input('sms', 'Отправить SMS',array('id' => 'sms', 'type'=>'button', 'class' => 'btn btn-success'));?>
+				<?=Form::input('sms', 'Отправить SMS',array('id' => 'sms', 'type'=>'button', 'class' => 'btn btn-success'));?>
 			</td>
 		</tr>
 		<tr>
@@ -91,7 +91,7 @@
 			<?}?>
 		</tr>
 		<tr>
-			<td>Развёрнутый диагноз:</td>
+			<td>Результат:</td>
 			<td colspan="2"><?=Form::textarea('comment', $data['comment'], array('id' => 'comment', 'class' => 'form-control'));?></td>
 		</tr>
 		<tr>
@@ -113,7 +113,7 @@
 		<tr>
 			<td class="right" colspan="3">
 				<?=Form::input('submit', 'Обновить',array('id' => 'button', 'type'=>'submit', 'class' => 'btn btn-primary'));?>
-				<?Form::input('sms', 'Отправить SMS',array('id' => 'sms_2', 'type'=>'button', 'class' => 'btn btn-success'));?>
+				<?=Form::input('sms', 'Отправить SMS',array('id' => 'sms_2', 'type'=>'button', 'class' => 'btn btn-success'));?>
 			</td>
 		</tr>
 	</table>

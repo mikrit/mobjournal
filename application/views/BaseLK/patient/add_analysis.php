@@ -76,7 +76,7 @@
 				<?}?>
 			</tr>
 			<tr>
-				<td>Развёрнутый диагноз:</td>
+				<td>Результат:</td>
 				<td colspan="2"><?=Form::textarea('comment', $data['comment'], array('id' => 'comment', 'class' => 'form-control'));?></td>
 			</tr>
 			<tr>

@@ -38,17 +38,16 @@ class Controller_BaseLK extends Controller_Template
 
 		$request = Request::factory($url);
 
-		/*$request->client()->options(array(
+		$request->client()->options(array(
 			CURLOPT_SSL_VERIFYPEER => FALSE,
-			CURLOPT_USERPWD => "email:password"
+			CURLOPT_USERPWD => "sms@molbiolab.ru:0eVICWBTgXVqPTLns6ZapZIngtsK"
 		));
-		$answer = $request->execute()->body();*/
+		$answer = $request->execute()->body();
 
-		$balance = '0';
-		/*if(strlen($answer) > 10)
+		if(strlen($answer) > 10)
 		{
 			$balance = json_decode($answer)->data->balance;
-		}*/
+		}
 
 		$menu->balance = $balance;
 		$menu->admin = $this->admin->loaded();

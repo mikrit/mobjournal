@@ -19,36 +19,52 @@
 	</tr>
 </table>
 
-<table class="table_print">
+<table class="table_print" style="margin-bottom: 25px;">
 	<tr>
-		<td>
+		<td style="font-size: 20px;padding-bottom: 10px;">
 			ФИО: <b><?=$data->patient->fio?></b>
 		</td>
-		<td>
+		<td style="font-size: 20px;padding-bottom: 10px;">
 			№ Исследования: <b><?=$data->number_a?></b>
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td style="font-size: 20px;padding-bottom: 10px;">
 			Пол: <b><?=$data->patient->sex==0?'Mужской':'Женский'?></b>
 		</td>
 		<td>
-			Материал: <?=$data->material_count?>
+
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td style="font-size: 20px;padding-bottom: 10px;">
 			Год рождения: <b><?=$data->patient->year?></b>
 		</td>
 		<td>
+
+		</td>
+	</tr>
+	<tr>
+		<td style="font-size: 20px;padding-bottom: 10px;">
 			Диагноз: <b><?=$data->patient->diagnosis?></b>
+		</td>
+		<td>
+
+		</td>
+	</tr>
+	<tr>
+		<td style="font-size: 20px;padding-bottom: 0px;">
+			Материал: <?=$data->material_count?>
+		</td>
+		<td>
+
 		</td>
 	</tr>
 </table>
 
-<table class="table_print">
+<table class="table_print" style="margin-bottom: 25px;">
 	<tr>
-		<td>
+		<td style="font-size: 20px;">
 			Методы: <br/>
 			<?foreach($data->methods->find_all() as $method){?>
 				- <?=$method->title?><br/>
@@ -73,7 +89,7 @@
 <table class="table_print">
 	<tr>
 		<th style="text-align: left;">
-			<b>Заключение исследования</b>
+			<b>Заключение</b>
 		</th>
 	</tr>
 	<tr>
