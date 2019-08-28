@@ -5,9 +5,9 @@
 <table id="user">
 	<tr>
 		<td>
-			<?=Html::anchor('data/list_types', 'Типы исследований');?>
-			<br/>
 			<?=Html::anchor('data/list_methods', 'Методы исследования');?>
+			<br/>
+			<?=Html::anchor('data/list_types', 'Типы исследований');?>
 			<br/>
 			<?=Html::anchor('data/list_analyzes', 'Исследования');?>
 			<br/>

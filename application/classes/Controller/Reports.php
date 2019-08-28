@@ -12,11 +12,11 @@ class Controller_Reports extends Controller_BaseLK
 		$_count = ORM::factory('patient');
 		$patients = ORM::factory('patient');
 
-		$data['to'] = time();
+		$data['to'] = date('Y-01-01');
 		$data['from'] = time();
 		$data['department'] = '';
 		$data['history'] = '';
-		$data['payment'] = 0;
+		$data['payment'] = -1;
 		$count = -1;
 
 		if ($_POST)
@@ -45,18 +45,21 @@ class Controller_Reports extends Controller_BaseLK
 			{
 				if($data['department'] != '')
 				{
-					$_count = $_count->and_where('department', 'LIKE', '%'.$data['department'].'%');
-					$patients = $patients->and_where('department', 'LIKE', '%'.$data['department'].'%');
+					$_count = $_count->and_where('patient.department', 'LIKE', '%'.$data['department'].'%');
+					$patients = $patients->and_where('patient.department', 'LIKE', '%'.$data['department'].'%');
 				}
 
 				if($data['history'] != '')
 				{
-					$_count = $_count->and_where('history', 'LIKE', '%'.$data['history'].'%');
-					$patients = $patients->and_where('history', 'LIKE', '%'.$data['history'].'%');
+					$_count = $_count->and_where('patient.history', 'LIKE', '%'.$data['history'].'%');
+					$patients = $patients->and_where('patient.history', 'LIKE', '%'.$data['history'].'%');
 				}
 
-				$_count = $_count->join('numbers', 'LEFT')->on('numbers.patient_id', '=', 'patient.id')->and_where('payment', '=', $data['payment']);
-				$patients = $patients->join('numbers', 'LEFT')->on('numbers.patient_id', '=', 'patient.id')->and_where('payment', '=', $data['payment']);
+				if($data['payment'] != -1)
+				{
+					$_count = $_count->join('numbers', 'LEFT')->on('numbers.patient_id', '=', 'patient.id')->and_where('payment', '=', $data['payment']);
+					$patients = $patients->join('numbers', 'LEFT')->on('numbers.patient_id', '=', 'patient.id')->and_where('payment', '=', $data['payment']);
+				}
 
 				$count = $_count->and_where('patient.date_add', '>=', $_POST['to'])->and_where('patient.date_add', '<=', $_POST['from'])->count_all();
 				$patients = $patients->and_where('patient.date_add', '>=', $_POST['to'])->and_where('patient.date_add', '<=', $_POST['from'])->find_all();
@@ -77,11 +80,12 @@ class Controller_Reports extends Controller_BaseLK
 		$_count = ORM::factory('number');
 		$numbersO = ORM::factory('number');
 
-		$count = -1;
-
 		$data['to'] = date('Y-01-01');
 		$data['from'] = time();
 		$data['status_id'] = 0;
+		$data['payment'] = -1;
+
+		$count = -1;
 
 		$analyzes = Helper::get_list_orm('analysis', 'title');
 
@@ -129,26 +133,25 @@ class Controller_Reports extends Controller_BaseLK
 				if($data['analysis_id'] != 0 || $data['status_id'] != 0)
 				{
 					$_count = $_count->join('analyzes_numbers')->on('analyzes_numbers.number_id', '=', 'number.id');
-
 					$numbersO = $numbersO->join('analyzes_numbers')->on('analyzes_numbers.number_id', '=', 'number.id');
 				}
 
 				if($data['analysis_id'] != 0)
 				{
-					$_count = $_count->join('analyzes')->on('analyzes.id', '=', 'analyzes_numbers.analysis_id');
-					$_count = $_count->and_where('analyzes.id', '=', $data['analysis_id']);
-
-					$numbersO = $numbersO->join('analyzes')->on('analyzes.id', '=', 'analyzes_numbers.analysis_id');
-					$numbersO = $numbersO->and_where('analyzes.id', '=', $data['analysis_id']);
+					$_count = $_count->join('analyzes')->on('analyzes.id', '=', 'analyzes_numbers.analysis_id')->and_where('analyzes.id', '=', $data['analysis_id']);
+					$numbersO = $numbersO->join('analyzes')->on('analyzes.id', '=', 'analyzes_numbers.analysis_id')->and_where('analyzes.id', '=', $data['analysis_id']);
 				}
 
 				if($data['status_id'] != 0)
 				{
-					$_count = $_count->join('statuses')->on('statuses.id', '=', 'analyzes_numbers.status_id');
-					$_count = $_count->and_where('statuses.id', '=', $data['status_id']);
+					$_count = $_count->join('statuses')->on('statuses.id', '=', 'analyzes_numbers.status_id')->and_where('statuses.id', '=', $data['status_id']);
+					$numbersO = $numbersO->join('statuses')->on('statuses.id', '=', 'analyzes_numbers.status_id')->and_where('statuses.id', '=', $data['status_id']);
+				}
 
-					$numbersO = $numbersO->join('statuses')->on('statuses.id', '=', 'analyzes_numbers.status_id');
-					$numbersO = $numbersO->and_where('statuses.id', '=', $data['status_id']);
+				if($data['payment'] != -1)
+				{
+					$_count = $_count->and_where('payment', '=', $data['payment']);
+					$numbersO = $numbersO->and_where('payment', '=', $data['payment']);
 				}
 
 				$count = $_count->and_where('date_add', '>=', $_POST['to'])->and_where('date_add', '<=', $_POST['from'])->count_all();
@@ -197,7 +200,7 @@ class Controller_Reports extends Controller_BaseLK
 
         $count = -1;
 
-        $data['to'] = time();
+        $data['to'] = date('Y-01-01');
         $data['from'] = time();
         $data['notes'] = '';
 
@@ -257,7 +260,7 @@ class Controller_Reports extends Controller_BaseLK
 
 		$count = -1;
 
-		$data['to'] = time();
+		$data['to'] = date('Y-01-01');
 		$data['from'] = time();
 		$data['status'] = '';
 

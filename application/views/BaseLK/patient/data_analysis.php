@@ -44,14 +44,13 @@
 		</tr>
 		<tr>
 			<td>Исследования:</td>
-			<td><b>
-					<?
-					foreach($data->analyzes->find_all() as $v)
-					{
-						echo $v->title."<br/>";
-					}
-					?>
-				</b></td>
+			<td>
+				<b>
+					<?foreach($data->analyzes->find_all() as $v){?>
+						<?=$v->title?><br/>
+					<?}?>
+				</b>
+			</td>
 		</tr>
 		<tr>
 			<td style="height: 25px;">Статусы гена:</td>

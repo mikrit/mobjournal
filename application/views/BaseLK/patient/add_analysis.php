@@ -96,7 +96,7 @@
 				<td colspan="2"><?=Form::select('user3_id', $sings, $data['user3_id'], array('class' => 'form-control'));?></td>
 			</tr>
 			<tr>
-				<td class="right" colspan="3"><?=Form::input('submit', 'Добавить',array('id' => 'button', 'type'=>'submit', 'class' => 'btn btn-primary'));?></td>
+				<td class="right" colspan="3"><?=Form::input('submit', 'Добавить', array('id' => 'button', 'type'=>'submit', 'class' => 'btn btn-primary'));?></td>
 			</tr>
 		</table>
 	<?=Form::close();?>

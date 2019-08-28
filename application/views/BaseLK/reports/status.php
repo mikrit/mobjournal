@@ -1,29 +1,35 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
 
-<div class="col-lg-6 non-printable">
-	<div id="title">По статусу готовности</div>
+<div class="t-center non-printable">
+	<div id="title" style="width: 350px;">По статусу готовности</div>
 
 	<?=Form::open('reports/status', array('method'=>'post'));?>
 		<table class="t_form">
 			<tr>
-				<td class="right" colspan="2">
+				<td class="right">
 					<div id="edit"><?=Html::anchor('reports', 'Назад')?></div>
 				</td>
 			</tr>
 			<tr>
-				<td><label>С:</label></td>
-				<td><?=Form::input('to', preg_match('/\d{6,}/', $data['to']) ? date('Y-m-d', $data['to']) : $data['to'], array('name' => 'date', 'class' => 'form-control date_input'));?></td>
+				<td>
+					<label>С:</label>
+					<?=Form::input('to', preg_match('/\d{6,}/', $data['to']) ? date('Y-m-d', $data['to']) : $data['to'], array('name' => 'date', 'class' => 'form-control date_input'));?>
+				</td>
 			</tr>
 			<tr>
-				<td><label>По:</label></td>
-				<td><?=Form::input('from', preg_match('/\d{6,}/', $data['from']) ? date('Y-m-d', $data['from']) : $data['from'], array('name' => 'date', 'class' => 'form-control date_input'));?></td>
+				<td>
+					<label>По:</label>
+					<?=Form::input('from', preg_match('/\d{6,}/', $data['from']) ? date('Y-m-d', $data['from']) : $data['from'], array('name' => 'date', 'class' => 'form-control date_input'));?>
+				</td>
 			</tr>
 			<tr>
-				<td><label>Статус:</label></td>
-				<td><?=Form::select('status', $statuses, $data['status'], array('class' => 'form-control'));?></td>
+				<td>
+					<label>Статус:</label>
+					<?=Form::select('status', $statuses, $data['status'], array('class' => 'form-control'));?>
+				</td>
 			</tr>
 			<tr>
-				<td class="right" colspan="2">
+				<td class="right">
 					<?=Form::input('submit', 'Поиск', array('id' => 'button_search', 'type'=>'submit', 'class' => 'btn btn-primary'));?>
 				</td>
 			</tr>
@@ -155,5 +161,8 @@
 			<?$i++;}?>
 	</table>
 <?}?>
-
 <br/>
+
+<script>
+	$($.date_input.initialize);
+</script>

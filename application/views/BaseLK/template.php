@@ -11,14 +11,6 @@
 
 	<title>Молекулярно - биологическая лаборатория</title>
 
-	<?=Html::style('media/bootstrap/css/bootstrap.min.css')?>
-	<?=Html::style('media/bootstrap/css/bootstrap-markdown.min.css')?>
-
-	<?=Html::style('media/css/sticky-footer-navbar.css')?>
-	<?=Html::style('media/css/ladda-themeless.min.css')?>
-	<?=Html::style('media/css/style.css')?>
-	<?=Html::style('media/css/date_input.css')?>
-
 	<?=Html::script('media/js/jquery.js')?>
 	<?=Html::script('media/js/jquery.date_input.js')?>
 	<?=Html::script('media/js/login.js')?>
@@ -26,9 +18,15 @@
 	<?=Html::script('media/js/ladda.min.js')?>
 	<?=Html::script('media/js/tinymce/tinymce.min.js')?>
 	<?=Html::script('media/js/project.js')?>
-
 	<?=Html::script('media/bootstrap/js/bootstrap.min.js')?>
 	<?=Html::script('media/bootstrap/js/bootstrap-markdown.js')?>
+
+	<?=Html::style('media/bootstrap/css/bootstrap.min.css')?>
+	<?=Html::style('media/bootstrap/css/bootstrap-markdown.min.css')?>
+	<?=Html::style('media/css/sticky-footer-navbar.css')?>
+	<?=Html::style('media/css/ladda-themeless.min.css')?>
+	<?=Html::style('media/css/style.css')?>
+	<?=Html::style('media/css/date_input.css')?>
 
 	<link rel="apple-touch-icon" href="media/img/mikro.png">
 	<link rel="icon" href="media/img/mikro.ico">

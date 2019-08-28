@@ -1,33 +1,47 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
 
-<div class="col-lg-6 non-printable">
-	<div id="title">Поиск по исследованиям</div>
+<div class="t-center non-printable">
+	<div id="title" style="width: 350px;">Поиск по исследованиям</div>
 
 	<?=Form::open('reports/analysis', array('method'=>'post'));?>
 	<table class="t_form">
 		<tr>
-			<td class="right" colspan="2">
+			<td class="right">
 				<div id="edit"><?=Html::anchor('reports', 'Назад')?></div>
 			</td>
 		</tr>
 		<tr>
-			<td><label>С:</label></td>
-			<td><?=Form::input('to', preg_match('/\d{6,}/', $data['to']) ? date('Y-m-d', $data['to']) : $data['to'], array('name' => 'date', 'class' => 'form-control date_input'));?></td>
+			<td>
+				<label>С:</label>
+				<?=Form::input('to', preg_match('/\d{6,}/', $data['to']) ? date('Y-m-d', $data['to']) : $data['to'], array('name' => 'date', 'class' => 'form-control date_input'));?>
+			</td>
 		</tr>
 		<tr>
-			<td><label>По:</label></td>
-			<td><?=Form::input('from', preg_match('/\d{6,}/', $data['from']) ? date('Y-m-d', $data['from']) : $data['from'], array('name' => 'date', 'class' => 'form-control date_input'));?></td>
+			<td>
+				<label>По:</label>
+				<?=Form::input('from', preg_match('/\d{6,}/', $data['from']) ? date('Y-m-d', $data['from']) : $data['from'], array('name' => 'date', 'class' => 'form-control date_input'));?>
+			</td>
 		</tr>
 		<tr>
-			<td><label>Исследование:</label></td>
-			<td><?=Form::select('analysis_id', $analyzes, $data['analysis_id'], array('id' => 'analisis', 'class' => 'form-control'));?></td>
+			<td>
+				<label>Исследование:</label>
+				<?=Form::select('analysis_id', $analyzes, $data['analysis_id'], array('id' => 'analisis', 'class' => 'form-control'));?>
+			</td>
 		</tr>
 		<tr>
-			<td><label>Статус:</label></td>
-			<td><?=$statuses?></td>
+			<td>
+				<label>Статус:</label>
+				<?=$statuses?>
+			</td>
 		</tr>
 		<tr>
-			<td class="right" colspan="2">
+			<td>
+				<label>Тип оплаты:</label>
+				<?=Form::select('payment', array(-1 => 'Все', 0 => '-', 1 => 'Платно', 2 => 'ОМС', 3 => 'ДМС'), $data['payment'], array('class' => 'form-control'));?>
+			</td>
+		</tr>
+		<tr>
+			<td class="right">
 				<?=Form::input('submit', 'Поиск', array('id' => 'button_search', 'type'=>'submit', 'class' => 'btn btn-primary'));?>
 			</td>
 		</tr>
@@ -90,7 +104,7 @@
 							<?=$number->patient->history?>
 						</td>
 						<td>
-							<?=$number->statuses2->where('status.analysis_id', '=', $data['analysis_id'])->find()->status?>
+							<?=$number->statuses->where('status.analysis_id', '=', $data['analysis_id'])->find()->status?>
 						</td>
 						<td>
 							<?=date('d.m.Y', $number->date_add)?>
@@ -155,7 +169,7 @@
 						<?=$number->patient->history?>
 					</td>
 					<td>
-						<?=$number->statuses2->where('status.analysis_id', '=', $data['analysis_id'])->find()->status?>
+						<?=$number->statuses->where('status.analysis_id', '=', $data['analysis_id'])->find()->status?>
 					</td>
 					<td>
 						<?=date('d.m.Y', $number->date_add)?>
@@ -167,7 +181,5 @@
 <?}?>
 
 <script>
-	$('#statuses').change(function(){
-
-	});
+	$($.date_input.initialize);
 </script>
