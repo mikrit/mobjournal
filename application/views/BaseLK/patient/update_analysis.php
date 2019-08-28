@@ -123,6 +123,7 @@
 <script>
 	$('#sms, #sms_2').click(function()
 	{
+		$(this).disabled();
 		var user_id = <?=$patient->id?>;
 		var num_id = <?=$id?>;
 
