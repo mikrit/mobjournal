@@ -128,7 +128,6 @@
 		var num_id = <?=$id?>;
 
 		$('#answer').html();
-		$(this).disabled();
 		$.ajax({
 			type: "POST",
 			url: '/ajax/send_sms',
