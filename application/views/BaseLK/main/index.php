@@ -140,6 +140,10 @@
 						<td>
 							<?if($number->payment == 1){?>
 								<span class="rub">Р</span>
+							<?}elseif($number->payment == 2){?>
+								<b>ОМС</b>
+							<?}elseif($number->payment == 3){?>
+								<b>ДМС</b>
 							<?}?>
 						</td>
 					</tr>
@@ -225,6 +229,10 @@
 						<td>
 							<?if($number->payment == 1){?>
 								<span class="rub">Р</span>
+							<?}elseif($number->payment == 2){?>
+								<b>ОМС</b>
+							<?}elseif($number->payment == 3){?>
+								<b>ДМС</b>
 							<?}?>
 						</td>
 					</tr>

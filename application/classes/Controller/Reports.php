@@ -16,6 +16,7 @@ class Controller_Reports extends Controller_BaseLK
 		$data['from'] = time();
 		$data['department'] = '';
 		$data['history'] = '';
+		$data['payment'] = 0;
 		$count = -1;
 
 		if ($_POST)
@@ -54,8 +55,11 @@ class Controller_Reports extends Controller_BaseLK
 					$patients = $patients->and_where('history', 'LIKE', '%'.$data['history'].'%');
 				}
 
-				$count = $_count->and_where('date_add', '>=', $_POST['to'])->and_where('date_add', '<=', $_POST['from'])->count_all();
-				$patients = $patients->and_where('date_add', '>=', $_POST['to'])->and_where('date_add', '<=', $_POST['from'])->find_all();
+				$_count = $_count->join('numbers', 'LEFT')->on('numbers.patient_id', '=', 'patient.id')->and_where('payment', '=', $data['payment']);
+				$patients = $patients->join('numbers', 'LEFT')->on('numbers.patient_id', '=', 'patient.id')->and_where('payment', '=', $data['payment']);
+
+				$count = $_count->and_where('patient.date_add', '>=', $_POST['to'])->and_where('patient.date_add', '<=', $_POST['from'])->count_all();
+				$patients = $patients->and_where('patient.date_add', '>=', $_POST['to'])->and_where('patient.date_add', '<=', $_POST['from'])->find_all();
 			}
 		}
 

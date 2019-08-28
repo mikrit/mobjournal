@@ -7,7 +7,7 @@
 		</td>
 		<td width="35%" style="text-align: left">
 			Молекулярно<br/>
-			Биологичкская<br/>
+			Биологическая<br/>
 			Лаборатория
 		</td>
 		<td width="50%">
@@ -19,7 +19,7 @@
 	</tr>
 </table>
 
-<table class="table_print" style="border: 1px solid #000" border="0">
+<table class="table_print">
 	<tr>
 		<td>
 			ФИО: <b><?=$data->patient->fio?></b>
@@ -49,11 +49,9 @@
 <table class="table_print">
 	<tr>
 		<td>
-			Методы:
-		</td>
-		<td>
+			Методы: <br/>
 			<?foreach($data->methods->find_all() as $method){?>
-				<b><?=$method->title?></b><br/>
+				- <?=$method->title?><br/>
 			<?}?>
 		</td>
 	</tr>
@@ -72,33 +70,35 @@
 	<?}?>
 </table>
 
-<table class="table_print" style="border-collapse: collapse; border: 1px solid #000">
+<table class="table_print">
 	<tr>
-		<th style="text-align: left; border: 1px solid #000;">
+		<th style="text-align: left;">
 			<b>Заключение исследования</b>
 		</th>
 	</tr>
 	<tr>
-		<td style="font-size: 14pt; border: 1px solid #000;">
+		<td style="font-size: 14pt;">
 			<?=$data->comment?>
 		</td>
 	</tr>
 </table>
 
-<table class="table_print" style="border-collapse: collapse; border: 1px solid #000">
-	<tr>
-		<th style="text-align: left; border: 1px solid #000;">
-			<b>Комментарии к исследованию</b>
-		</th>
-	</tr>
-	<tr>
-		<td style="font-size: 14pt; border: 1px solid #000;">
-			<?=$data->notes?>
-		</td>
-	</tr>
-</table>
+<?if($data->notes != ''){?>
+	<table class="table_print">
+		<tr>
+			<th style="text-align: left;">
+				<b>Комментарии к исследованию</b>
+			</th>
+		</tr>
+		<tr>
+			<td style="font-size: 14pt;">
+				<?=$data->notes?>
+			</td>
+		</tr>
+	</table>
+<?}?>
 
-<table class="table_print2" border="0">
+<table class="table_print2">
 	<tr>
 		<td>
 			Дата выдачи заключения: <?=(isset($data->date_comment) ? date('d.m.Y', $data->date_comment) : date('d.m.Y')).' г.'?>

@@ -27,6 +27,10 @@
 			<td colspan="2"><?=Form::input('history', $data['history'], array('class' => 'input'));?></td>
 		</tr>
 		<tr>
+			<td>Тип оплаты:</td>
+			<td colspan="2"><?=Form::select('payment', array(0 => '-', 1 => 'Платно', 2 => 'ОМС', 3 => 'ДМС'), $data['payment']);?></td>
+		</tr>
+		<tr>
 			<td class="right" colspan="3"><?=Form::input('submit', 'Поиск',array('id' => 'button', 'type'=>'submit'));?></td>
 		</tr>
 	</table>

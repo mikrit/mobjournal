@@ -111,7 +111,19 @@
 		</tr>
 		<tr>
 			<td style="height: 25px;">Оплата:</td>
-			<td><b><?=$data->payment == 0 ? 'ОМС' : 'Платно'?></b></td>
+			<td>
+				<b>
+					<?if($data->payment == 0){?>
+						-
+					<?}elseif($data->payment == 1){?>
+						Платно
+					<?}elseif($data->payment == 2){?>
+						ОМС
+					<?}elseif($data->payment == 3){?>
+						ДМС
+					<?}?>
+				</b>
+			</td>
 		</tr>
 	</table>
 	<br/><br/><br/>

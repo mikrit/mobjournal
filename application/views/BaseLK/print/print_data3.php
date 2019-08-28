@@ -21,7 +21,7 @@
 			</div>
 			<div style="font-size: 18px; padding-bottom: 25px;">
 				Молекулярно<br/>
-				Биологичкская<br/>
+				Биологическая<br/>
 				Лаборатория
 			</div>
 		</td>
@@ -135,11 +135,9 @@
 		<td width="1%" style="border-left: 1px dashed;"></td>
 		<td width="50%" align="left" rowspan="2" id="left_row">
 			<br/>
-				Молекулярно<br/>
-				Биологичкская<br/>
-				Лаборатория
-
-			<br/>
+			Молекулярно<br/>
+			Биологическая<br/>
+			Лаборатория<br/>
 			<br/>
 
 			ФИО пациента: <b><?=$data->patient->fio?></b>
@@ -147,7 +145,7 @@
 			<br/>
 			<br/>
 
-			№ исследования: <b><?=$data->number_a?></b>
+			№ Истории болезни: <b><?=$data->patient->history?></b>
 			<br/>
 			<br/>
 
