@@ -112,7 +112,7 @@
 		</tr>
 		<tr>
 			<td class="right" colspan="3">
-				<?=Form::input('submit', 'Обновить',array('id' => 'button', 'type'=>'submit', 'class' => 'btn btn-primary'));?>
+				<?=Form::input('submit', 'Обновить',array('id' => 'button2', 'type'=>'submit', 'class' => 'btn btn-primary'));?>
 				<?=Form::input('sms', 'Отправить SMS',array('id' => 'sms_2', 'type'=>'button', 'class' => 'btn btn-success'));?>
 			</td>
 		</tr>
@@ -123,12 +123,14 @@
 <script>
 	$('#sms, #sms_2').click(function()
 	{
+		console.log(111);
 		$(this).disabled();
+		console.log(234);
 		var user_id = <?=$patient->id?>;
 		var num_id = <?=$id?>;
 
 		$('#answer').html();
-
+		$(this).disabled();
 		$.ajax({
 			type: "POST",
 			url: '/ajax/send_sms',
