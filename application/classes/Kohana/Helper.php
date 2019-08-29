@@ -24,4 +24,16 @@ abstract class Kohana_Helper {
 
 		return $datas;
 	}
+
+	public static function get_list_orm_analizes($table, $column, $type_id){
+		$datas = array();
+		$types = ORM::factory($table, $type_id);
+		$analyzes = $types->analyzes->find_all();
+
+		foreach($analyzes as $val){
+			$datas[$val->id] = $val->$column;
+		}
+
+		return $datas;
+	}
 }

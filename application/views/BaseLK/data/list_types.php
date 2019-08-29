@@ -18,6 +18,9 @@
 		<td>
 			Методы исследований
 		</td>
+		<td>
+			Исследования
+		</td>
 	</tr>
 	<?$i=1;?>
 	<?foreach($data as $type){?>
@@ -32,6 +35,11 @@
 			<td>
 				<?foreach($type->methods->find_all() as $method){?>
 					<?=$method->title?><br/>
+				<?}?>
+			</td>
+			<td>
+				<?foreach($type->analyzes->find_all() as $analysis){?>
+					<?=$analysis->title?><br/>
 				<?}?>
 			</td>
 		</tr>

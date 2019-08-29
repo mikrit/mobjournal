@@ -42,6 +42,17 @@
 				</td>
 			</tr>
 			<tr>
+				<td>
+					<label>Исследования:</label><br/>
+					<?if(count($analyzes) == 0){?>
+						Нет ни одного "Метода исследования"
+					<?}?>
+					<?foreach($analyzes as $analysis_id => $analysis){?>
+						<?=Form::checkbox('analysis_'.$analysis_id, 1, $data['analysis_'.$analysis_id] == 0 ? false : true)." ".$analysis?><br/>
+					<?}?>
+				</td>
+			</tr>
+			<tr>
 				<td class="right">
 					<?=Form::input('submit', 'Обновить',array('id' => 'button', 'type'=>'submit', 'class' => 'btn btn-primary'));?>
 				</td>

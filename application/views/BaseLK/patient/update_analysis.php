@@ -63,10 +63,10 @@
 			<td>Оплата:</td>
 			<td colspan="2"><?=Form::select('payment', array(0 => '-', 1 => 'Платно', 2 => 'ОМС', 3 => 'ДМС', 4 => 'НИР'), $data['payment'], array('class' => 'form-control'));?></td>
 		</tr>
-		<tr>
+		<tr id="rowspan_analyzes">
 			<td rowspan="<?=ceil(count($analyzes)/2)+1?>">Исследования:</td>
 		</tr>
-		<tr>
+		<tr id="analyzes">
 			<?$i=0;foreach($analyzes as $k => $v){?>
 				<?$i++?>
 				<td>
@@ -84,7 +84,7 @@
 						echo Form::select('status_'.$k, $statuses, $data['status_'.$k]);
 					?>
 				</td>
-				<?if($i % 2 == 0){?>
+				<?if($i % 2 == 0 && $i != 2){?>
 					</tr>
 					<tr>
 				<?}?>
@@ -172,6 +172,8 @@
 			else
 			{
 				$('#method_id').html(data.methods);
+				$('#rowspan_analyzes').html(data.rowspan_analyzes);
+				$('#analyzes').html(data.analyzes);
 			}
 		});
 

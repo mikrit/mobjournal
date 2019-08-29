@@ -12,6 +12,11 @@ class Model_Type extends ORM
 			'model'			=> 'number',
 			//'through'		=> 'methods_types',
 			'foreign_key'	=> 'type_id',
+		),
+		'analyzes' => array(
+			'model'			=> 'analysis',
+			'through'		=> 'analyzes_types',
+			'foreign_key'	=> 'type_id',
 		)
 	);
 

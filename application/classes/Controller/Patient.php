@@ -281,6 +281,7 @@ class Controller_Patient extends Controller_BaseLK
 					}
 				}
 
+				$analyzes = Helper::get_list_orm('analysis', 'title');
 				foreach($analyzes as $k => $v)
 				{
 					if(isset($data['analysis_'.$k])){
@@ -302,6 +303,7 @@ class Controller_Patient extends Controller_BaseLK
 			}
 		}
 
+		$analyzes = Helper::get_list_orm_analizes('type', 'title', 1);
 		foreach($analyzes as $k => $v){
 			if(!isset($data['analysis_'.$k])){
 				$data['analysis_'.$k] = 0;
@@ -369,7 +371,6 @@ class Controller_Patient extends Controller_BaseLK
 		$data2 = $data->as_array();
 
 		$types = Helper::get_list_orm('type', 'title');
-		$analyzes = Helper::get_list_orm('analysis', 'title');
 		$statuses = Helper::get_list_orm('status', 'status');
 
 		$sings = array(0 => '');
@@ -426,6 +427,7 @@ class Controller_Patient extends Controller_BaseLK
 					}
 				}
 
+				$analyzes = Helper::get_list_orm('analysis', 'title');
 				foreach($analyzes as $k => $v)
 				{
 					if(!isset($_POST['analysis_'.$k]))
@@ -462,7 +464,6 @@ class Controller_Patient extends Controller_BaseLK
 		}
 
 		$methods = Helper::get_list_orm_method('type', 'title', $data->type_id);
-
 		foreach($methods as $k => $v){
 			if(!isset($data2['method_'.$k]))
 			{
@@ -486,6 +487,7 @@ class Controller_Patient extends Controller_BaseLK
 			$statuses_arr[$v->analysis_id] = $v->status_id;
 		}
 
+		$analyzes = Helper::get_list_orm_analizes('type', 'title', $data->type_id);
 		foreach($analyzes as $k => $v){
 			if(!isset($data2['analysis_'.$k]))
 			{

@@ -269,6 +269,7 @@ class Controller_Data extends Controller_BaseLK
 		$message = "";
 		$data2 = $data->as_array();
 		$methods = Helper::get_list_orm('method', 'title');
+		$analyzes = Helper::get_list_orm('analysis', 'title');
 
 		if ($_POST)
 		{
@@ -284,7 +285,8 @@ class Controller_Data extends Controller_BaseLK
 			{
 				$data->values($_POST)->update($post);
 
-				foreach($methods as $k => $v){
+				foreach($methods as $k => $v)
+				{
 					if(!isset($_POST['method_'.$k]))
 					{
 						DB::delete('methods_types')
@@ -299,6 +301,28 @@ class Controller_Data extends Controller_BaseLK
 						if(!$data->has('methods', $k))
 						{
 							DB::insert('methods_types', array('method_id', 'type_id'))
+								->values(array($k, $id))
+								->execute();
+						}
+					}
+				}
+
+				foreach($analyzes as $k => $v)
+				{
+					if(!isset($_POST['analysis_'.$k]))
+					{
+						DB::delete('analyzes_types')
+							->where('type_id', '=', $id)
+							->and_where('analysis_id', '=', $k)
+							->execute();
+
+						$data2['analysis_'.$k] = 0;
+					}
+					else
+					{
+						if(!$data->has('analyzes', $k))
+						{
+							DB::insert('analyzes_types', array('analysis_id', 'type_id'))
 								->values(array($k, $id))
 								->execute();
 						}
@@ -324,12 +348,28 @@ class Controller_Data extends Controller_BaseLK
 			}
 		}
 
+		foreach($analyzes as $k => $v)
+		{
+			if(!isset($data2['analysis_'.$k]))
+			{
+				if($data->has('analyzes', $k))
+				{
+					$data2['analysis_'.$k] = 1;
+				}
+				else
+				{
+					$data2['analysis_'.$k] = 0;
+				}
+			}
+		}
+
 		$view = View::factory('BaseLK/data/update_types');
 		$view->id = $id;
 		$view->data = $data2;
 		$view->errors = $errors;
 		$view->message = $message;
 		$view->methods = $methods;
+		$view->analyzes = $analyzes;
 
 		$this->template->content = $view->render();
 	}

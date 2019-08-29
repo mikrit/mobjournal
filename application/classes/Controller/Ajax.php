@@ -155,13 +155,46 @@ class Controller_Ajax extends Controller
 		if(isset($_POST['type_id']))
 		{
 			$methodsL = Helper::get_list_orm_method('type', 'title', $_POST['type_id']);
+			$analyzesL = Helper::get_list_orm_analizes('type', 'title', $_POST['type_id']);
 
 			$methods = '';
 			foreach($methodsL as $method_id => $method){
 				$methods .= '<div class="checkbox"><label>'.Form::checkbox('method_'.$method_id, 1, false)." ".$method.'</label></div>';
 			}
+
+			$rowspan_analyzes = '<td rowspan="'.(ceil(count($analyzesL)/2)+1).'">Исследования:</td>';
+
+			$analyzes = '';
+			$i=0;
+			foreach($analyzesL as $k => $v)
+			{
+				$i++;
+				$analyzes .= '<td>';
+				$analyzes .= Form::checkbox('analysis_'.$k, 1, false)." ".$v;
+				$analyzes .= '<br/>';
+
+				$analysis = ORM::factory('analysis', $k);
+				$orm = $analysis->statuses2->find_all();
+
+				$statuses = array(0 => '-');
+				foreach($orm as $status)
+				{
+					$statuses[$status->id] = $status->status;
+				}
+
+				$analyzes .= Form::select('status_'.$k, $statuses);
+				$analyzes .= '</td>';
+
+				if($i % 2 == 0 && $i != 2)
+				{
+					$analyzes .= '</tr>';
+					$analyzes .= '<tr>';
+				}
+			}
 		}
 
-		echo json_encode(array('error' => 0, 'methods' => $methods));
+		//var_dump($rowspan_analyzes, $analyzes);die;
+
+		echo json_encode(array('error' => 0, 'methods' => $methods, 'rowspan_analyzes' => $rowspan_analyzes, 'analyzes' => $analyzes));
 	}
 }
