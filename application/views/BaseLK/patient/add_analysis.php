@@ -46,7 +46,7 @@
 			</tr>
 			<tr>
 				<td>Оплата:</td>
-				<td colspan="2"><?=Form::select('payment', array(0 => '-', 1 => 'Платно', 2 => 'ОМС', 3 => 'ДМС'), $data['payment'], array('class' => 'form-control'));?></td>
+				<td colspan="2"><?=Form::select('payment', array(0 => '-', 1 => 'Платно', 2 => 'ОМС', 3 => 'ДМС', 4 => 'НИР'), $data['payment'], array('class' => 'form-control'));?></td>
 			</tr>
 			<tr>
 				<td rowspan="<?=ceil(count($analyzes)/2)+1?>">Исследования:</td>

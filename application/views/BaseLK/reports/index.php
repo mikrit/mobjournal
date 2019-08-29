@@ -7,7 +7,7 @@
 		<td>
 			<?Html::anchor('reports/explores', 'По исследованиям');?>
 			<!--br/-->
-			<?=Html::anchor('reports/patients', 'По пациенту');?>
+			<?=Html::anchor('reports/patients', 'По пациенту и оплате');?>
 			<br/>
 			<?=Html::anchor('reports/analysis', 'По анализу и статусу');?>
 			<br/>

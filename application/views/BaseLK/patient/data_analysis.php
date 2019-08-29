@@ -120,6 +120,8 @@
 						ОМС
 					<?}elseif($data->payment == 3){?>
 						ДМС
+					<?}elseif($data->payment == 4){?>
+						НИР
 					<?}?>
 				</b>
 			</td>

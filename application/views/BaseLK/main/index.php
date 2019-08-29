@@ -144,6 +144,8 @@
 								<b>ОМС</b>
 							<?}elseif($number->payment == 3){?>
 								<b>ДМС</b>
+							<?}elseif($number->payment == 4){?>
+								<b>НИР</b>
 							<?}?>
 						</td>
 					</tr>
@@ -233,6 +235,8 @@
 								<b>ОМС</b>
 							<?}elseif($number->payment == 3){?>
 								<b>ДМС</b>
+							<?}elseif($number->payment == 4){?>
+								<b>НИР</b>
 							<?}?>
 						</td>
 					</tr>
