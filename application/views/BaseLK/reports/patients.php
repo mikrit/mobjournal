@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
 
 <div class="t-center">
-	<div id="title" style="width: 350px;">Поиск по пациентам</div>
+	<div id="title" style="width: 350px;">По пациентам и оплате</div>
 
 	<?=Form::open('reports/patients', array('method'=>'post'));?>
 		<table class="t_form">

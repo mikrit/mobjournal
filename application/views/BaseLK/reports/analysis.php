@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
 
 <div class="t-center non-printable">
-	<div id="title" style="width: 350px;">Поиск по исследованиям</div>
+	<div id="title" style="width: 350px;">По анализу, статусу и оплате</div>
 
 	<?=Form::open('reports/analysis', array('method'=>'post'));?>
 	<table class="t_form">
