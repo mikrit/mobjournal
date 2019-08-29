@@ -104,7 +104,7 @@
 
 <script>
 	$('#button').click(function(){
-		$(this).prop('disabled', true);
+		$(this).disabled();
 	});
 
 	$('#type_id').change(function(){

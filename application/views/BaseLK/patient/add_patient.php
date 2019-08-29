@@ -62,6 +62,6 @@
 
 <script>
 	$('#button').click(function(){
-		$(this).prop('disabled', true);
+		$(this).disabled();
 	});
 </script>
