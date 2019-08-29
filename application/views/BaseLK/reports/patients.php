@@ -37,7 +37,7 @@
 			<tr>
 				<td>
 					<label>Тип оплаты:</label>
-					<?=Form::select('payment', array(-1 => 'Все', 0 => '-', 1 => 'Платно', 2 => 'ОМС', 3 => 'ДМС'), $data['payment'], array('class' => 'form-control'));?>
+					<?=Form::select('payment', array(-1 => 'Все', 0 => '-', 1 => 'Платно', 2 => 'ОМС', 3 => 'ДМС', 4 => 'НИР'), $data['payment'], array('class' => 'form-control'));?>
 				</td>
 			</tr>
 			<tr>
