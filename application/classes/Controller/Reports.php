@@ -84,6 +84,7 @@ class Controller_Reports extends Controller_BaseLK
 		$data['from'] = time();
 		$data['status_id'] = 0;
 		$data['payment'] = -1;
+		$data['analysis_id'] = 0;
 
 		$count = -1;
 
