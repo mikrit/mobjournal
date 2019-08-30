@@ -166,7 +166,7 @@ class Controller_Ajax extends Controller
 
 			$analyzes = '';
 			$i=0;
-			foreach($analyzes as $k => $v)
+			foreach($analyzesL as $k => $v)
 			{
 				$i++;
 				$analyzes .= '<td>';
