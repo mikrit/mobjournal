@@ -62,7 +62,7 @@
 	</tr>
 	<tr>
 		<td style="font-size: 20px;padding-bottom: 0px;">
-			Кол-во материала: <?=$data->material_count?>
+			Номер материала: <?=$data->material_number?>
 		</td>
 		<td>
 
