@@ -7,11 +7,11 @@
 		<td>
 			<?=Html::anchor('data/list_methods', 'Методы исследования');?>
 			<br/>
-			<?=Html::anchor('data/list_types', 'Типы исследований');?>
-			<br/>
 			<?=Html::anchor('data/list_analyzes', 'Исследования');?>
 			<br/>
 			<?=Html::anchor('data/list_statuses', 'Статус гена');?>
+			<br/>
+			<?=Html::anchor('data/list_types', 'Типы исследований');?>
 			<br/>
 		</td>
 	</tr>
