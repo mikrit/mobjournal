@@ -46,6 +46,14 @@
 	</tr>
 	<tr>
 		<td style="font-size: 20px;padding-bottom: 10px;">
+			История болезни: <b><?=$data->patient->history?></b>
+		</td>
+		<td>
+
+		</td>
+	</tr>
+	<tr>
+		<td style="font-size: 20px;padding-bottom: 10px;">
 			Диагноз: <b><?=$data->patient->diagnosis?></b>
 		</td>
 		<td>
@@ -54,7 +62,7 @@
 	</tr>
 	<tr>
 		<td style="font-size: 20px;padding-bottom: 0px;">
-			Материал: <?=$data->material_count?>
+			Кол-во материала: <?=$data->material_count?>
 		</td>
 		<td>
 
