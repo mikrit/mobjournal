@@ -45,7 +45,7 @@
 				<td>
 					<label>Исследования:</label><br/>
 					<?if(count($analyzes) == 0){?>
-						Нет ни одного "Метода исследования"
+						Нет ни одного "Исследования"
 					<?}?>
 					<?foreach($analyzes as $analysis_id => $analysis){?>
 						<?=Form::checkbox('analysis_'.$analysis_id, 1, $data['analysis_'.$analysis_id] == 0 ? false : true)." ".$analysis?><br/>
