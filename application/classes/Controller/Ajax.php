@@ -166,7 +166,7 @@ class Controller_Ajax extends Controller
 
 			$analyzes = '';
 			$i=0;
-			foreach($analyzesL as $k => $v)
+			foreach($analyzes as $k => $v)
 			{
 				$i++;
 				$analyzes .= '<td>';
@@ -177,7 +177,8 @@ class Controller_Ajax extends Controller
 				$orm = $analysis->statuses->find_all();
 
 				$statuses = array(0 => '-');
-				foreach($orm as $status){
+				foreach($orm as $status)
+				{
 					$statuses[$status->id] = $status->status;
 				}
 
@@ -191,8 +192,6 @@ class Controller_Ajax extends Controller
 				}
 			}
 		}
-
-		//var_dump($rowspan_analyzes, $analyzes);die;
 
 		echo json_encode(array('error' => 0, 'methods' => $methods, 'rowspan_analyzes' => $rowspan_analyzes, 'analyzes' => $analyzes));
 	}
