@@ -74,7 +74,7 @@
 					<br/>
 					<?
 						$analysis = ORM::factory('analysis', $k);
-						$orm = $analysis->statuses2->find_all();
+						$orm = $analysis->statuses->find_all();
 
 						$statuses = array(0 => '-');
 						foreach($orm as $status){

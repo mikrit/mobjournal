@@ -55,11 +55,11 @@
 				<?$i=0;foreach($analyzes as $k => $v){?>
 					<?$i++?>
 					<td>
-						<?=Form::checkbox('analysis_'.$k, 1, $data['analysis_'.$k] == 0 ? false : true)." ".$v?>
+						<? echo Form::checkbox('analysis_'.$k, 1, $data['analysis_'.$k] == 0 ? false : true)." ".$v?>
 						<br/>
 						<?
 							$analysis = ORM::factory('analysis', $k);
-							$orm = $analysis->statuses2->find_all();
+							$orm = $analysis->statuses->find_all();
 
 							$statuses = array(0 => '-');
 							foreach($orm as $status){

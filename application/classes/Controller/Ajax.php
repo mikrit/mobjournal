@@ -174,11 +174,10 @@ class Controller_Ajax extends Controller
 				$analyzes .= '<br/>';
 
 				$analysis = ORM::factory('analysis', $k);
-				$orm = $analysis->statuses2->find_all();
+				$orm = $analysis->statuses->find_all();
 
 				$statuses = array(0 => '-');
-				foreach($orm as $status)
-				{
+				foreach($orm as $status){
 					$statuses[$status->id] = $status->status;
 				}
 
