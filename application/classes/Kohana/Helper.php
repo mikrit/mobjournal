@@ -2,7 +2,8 @@
 
 abstract class Kohana_Helper {
 
-	public static function get_list_orm($table, $column){
+	public static function get_list_orm($table, $column)
+	{
 		$datas = array();
 		$orm = ORM::factory($table)->find_all();
 
@@ -13,7 +14,8 @@ abstract class Kohana_Helper {
 		return $datas;
 	}
 
-	public static function get_list_orm_method($table, $column, $type_id){
+	public static function get_list_orm_method($table, $column, $type_id)
+	{
 		$datas = array();
 		$types = ORM::factory($table, $type_id);
 		$methods = $types->methods->find_all();
@@ -25,7 +27,8 @@ abstract class Kohana_Helper {
 		return $datas;
 	}
 
-	public static function get_list_orm_analizes($table, $column, $type_id){
+	public static function get_list_orm_analizes($table, $column, $type_id)
+	{
 		$datas = array();
 		$types = ORM::factory($table, $type_id);
 		$analyzes = $types->analyzes->find_all();

@@ -59,7 +59,7 @@
 						<br/>
 						<?
 							$analysis = ORM::factory('analysis', $k);
-							$orm = $analysis->statuses->find_all();
+							$orm = $analysis->statuses2->find_all();
 
 							$statuses = array(0 => '-');
 							foreach($orm as $status){
@@ -71,7 +71,7 @@
 					</td>
 					<?if($i % 2 == 0){?>
 						</tr>
-						<tr>
+						<tr class="analiz">
 					<?}?>
 				<?}?>
 			</tr>
@@ -109,7 +109,6 @@
 
 	$('#type_id').change(function(){
 		var type_id = $(this).val();
-
 		$.ajax({
 			type: "POST",
 			url: '/ajax/change_type',
@@ -127,8 +126,10 @@
 			else
 			{
 				$('#method_id').html(data.methods);
+				$('#analyzes').remove();
+				$('.analiz').remove();
 				$('#rowspan_analyzes').html(data.rowspan_analyzes);
-				$('#analyzes').html(data.analyzes);
+				$('#rowspan_analyzes').after(data.analyzes);
 			}
 		});
 

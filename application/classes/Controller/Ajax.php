@@ -155,16 +155,17 @@ class Controller_Ajax extends Controller
 		if(isset($_POST['type_id']))
 		{
 			$methodsL = Helper::get_list_orm_method('type', 'title', $_POST['type_id']);
-			$analyzesL = Helper::get_list_orm_analizes('type', 'title', $_POST['type_id']);
 
 			$methods = '';
 			foreach($methodsL as $method_id => $method){
 				$methods .= '<div class="checkbox"><label>'.Form::checkbox('method_'.$method_id, 1, false)." ".$method.'</label></div>';
 			}
 
+			$analyzesL = Helper::get_list_orm_analizes('type', 'title', $_POST['type_id']);
+
 			$rowspan_analyzes = '<td rowspan="'.(ceil(count($analyzesL)/2)+1).'">Исследования:</td>';
 
-			$analyzes = '';
+			$analyzes = '<tr id="analyzes">';
 			$i=0;
 			foreach($analyzesL as $k => $v)
 			{
@@ -174,7 +175,7 @@ class Controller_Ajax extends Controller
 				$analyzes .= '<br/>';
 
 				$analysis = ORM::factory('analysis', $k);
-				$orm = $analysis->statuses->find_all();
+				$orm = $analysis->statuses2->find_all();
 
 				$statuses = array(0 => '-');
 				foreach($orm as $status)
@@ -188,9 +189,10 @@ class Controller_Ajax extends Controller
 				if($i % 2 == 0)
 				{
 					$analyzes .= '</tr>';
-					$analyzes .= '<tr>';
+					$analyzes .= '<tr class="analiz">';
 				}
 			}
+			$analyzes .= '</tr>';
 		}
 
 		echo json_encode(array('error' => 0, 'methods' => $methods, 'rowspan_analyzes' => $rowspan_analyzes, 'analyzes' => $analyzes));
