@@ -114,7 +114,7 @@
 	</table>
 <?}?>
 
-<table class="table_print2">
+<table class="table_print2" style="font-size: 20px;">
 	<tr>
 		<td>
 			Дата выдачи заключения: <?=(isset($data->date_comment) ? date('d.m.Y', $data->date_comment) : date('d.m.Y')).' г.'?>
