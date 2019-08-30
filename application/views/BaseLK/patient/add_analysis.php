@@ -69,7 +69,7 @@
 							echo Form::select('status_'.$k, $statuses, $data['status_'.$k]);
 						?>
 					</td>
-					<?if($i % 2 == 0 || ($i != 2 && count($statuses) == 2)){?>
+					<?if($i % 2 == 0){?>
 						</tr>
 						<tr>
 					<?}?>

@@ -185,7 +185,7 @@ class Controller_Ajax extends Controller
 				$analyzes .= Form::select('status_'.$k, $statuses);
 				$analyzes .= '</td>';
 
-				if($i % 2 == 0 && $i != 2)
+				if($i % 2 == 0)
 				{
 					$analyzes .= '</tr>';
 					$analyzes .= '<tr>';
