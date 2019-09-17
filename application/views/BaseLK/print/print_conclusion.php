@@ -107,21 +107,6 @@
 	</tr>
 </table>
 
-<?if($data->notes != ''){?>
-	<table class="table_print">
-		<tr>
-			<th style="text-align: left;">
-				<b>Комментарии к исследованию</b>
-			</th>
-		</tr>
-		<tr>
-			<td style="font-size: 14pt;">
-				<?=$data->notes?>
-			</td>
-		</tr>
-	</table>
-<?}?>
-
 <table class="table_print2" style="font-size: 20px;">
 	<tr>
 		<td>
