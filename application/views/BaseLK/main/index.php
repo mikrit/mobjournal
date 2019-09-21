@@ -153,7 +153,7 @@
 				<?}?>
 			</table>
 
-			<div id="pages" class="center"><?=$page_list?></div>
+			<div class="center" style="margin-bottom: 100px;"><?=$page_list?></div>
 		</div>
 		<div id="somat" class="tab-pane fade">
 			<table class="table table-striped">
@@ -244,7 +244,7 @@
 				<?}?>
 			</table>
 
-			<div id="pages" class="center"><?=$page_list2?></div>
+			<div class="center" style="margin-bottom: 100px;"><?=$page_list2?></div>
 		</div>
 	</div>
 </div>
