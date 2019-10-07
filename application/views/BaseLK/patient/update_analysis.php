@@ -35,7 +35,7 @@
 		</tr>
 		<tr>
 			<td>Тип анализа:</td>
-			<td colspan="2"><?=Form::select('type_id', $types, $data['type_id'], array('id' => 'type_id', 'class' => 'form-control'));?></td>
+			<td colspan="2"><?=Form::select('type_id', $types, $data['type_id'], array('id' => 'type_id', 'class' => 'form-control', 'disabled' => 'disabled'));?></td>
 		</tr>
 		<tr>
 			<td>Номер анализа:</td>
