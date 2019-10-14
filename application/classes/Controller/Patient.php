@@ -359,6 +359,8 @@ class Controller_Patient extends Controller_BaseLK
 		$id = $this->request->param('id');
 		$data = ORM::factory('number', $id);
 
+		$type_id = $data->type_id;
+
 		if(!$data->loaded())
 		{
 			$this->redirect('/');
@@ -387,6 +389,8 @@ class Controller_Patient extends Controller_BaseLK
 			$post = Model_Number::validation_number($_POST);
 
 			$data2 = $_POST;
+			$data2['type_id'] = $type_id;
+
 			if($data->sms == NULL || $data->sms == 0)
 			{
 				$data2['sms'] = 0;
