@@ -114,10 +114,10 @@
 							<?="<a id='$number->id' href=javascript:change_status('$number->id')>".Html::image('media/img/'.$number->status.'.png', array('alt' => $statuses[$number->status], 'title' => $statuses[$number->status], 'width' => 32, 'height' => 32))."</a>" ?>
 						</td>
 						<td>
-							<?=Html::anchor('patient/data_analysis/'.$number->id, $number->number_a, array('target' => '_blank'))?>
+							<?=Html::anchor('patient/data_analysis/'.$number->id, $number->number_a)?>
 						</td>
 						<td>
-							<?=Html::anchor('patient/data_patient/'.$number->pid, $number->fio, array('target' => '_blank'))?>
+							<?=Html::anchor('patient/data_patient/'.$number->pid, $number->fio)?>
 						</td>
 						<td>
 							<?=$number->patient->year?>
@@ -205,10 +205,10 @@
 							<?="<a id='$number->id' href=javascript:change_status('$number->id')>".Html::image('media/img/'.$number->status.'.png', array('alt' => $statuses[$number->status], 'title' => $statuses[$number->status], 'width' => 32, 'height' => 32))."</a>" ?>
 						</td>
 						<td>
-							<?=Html::anchor('patient/data_analysis/'.$number->id, $number->number_a, array('target' => '_blank'))?>
+							<?=Html::anchor('patient/data_analysis/'.$number->id, $number->number_a)?>
 						</td>
 						<td>
-							<?=Html::anchor('patient/data_patient/'.$number->pid, $number->fio, array('target' => '_blank'))?>
+							<?=Html::anchor('patient/data_patient/'.$number->pid, $number->fio)?>
 						</td>
 						<td>
 							<?=$number->patient->year?>
