@@ -55,10 +55,10 @@
 
 <div class="row col-lg-12">
 	<ul class="nav nav-tabs">
-		<li class="active">
+		<li id="li_germ" class="active">
 			<a data-toggle="tab" href="#germ" aria-expanded="true">Герминальные</a>
 		</li>
-		<li>
+		<li id="li_somat">
 			<a data-toggle="tab" href="#somat" aria-expanded="false">Соматические</a>
 		</li>
 	</ul>
@@ -248,3 +248,16 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	var tab = <?=$tab?>;
+
+	if(tab == 1)
+	{
+		$('#li_germ a').click();
+	}
+	else
+	{
+		$('#li_somat a').click();
+	}
+</script>

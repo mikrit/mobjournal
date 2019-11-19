@@ -9,6 +9,7 @@ class Controller_Main extends Controller_BaseLK
 		$data['number_a'] = '';
 		$data['material_number'] = '';
 		$data['year'] = date('Y');
+		$data['tab'] = 1;
 
 		$statuses = array(
 			1 => 'Зарегистрирован, в ожидании обработки',
@@ -95,6 +96,11 @@ class Controller_Main extends Controller_BaseLK
 			}*/
 		}
 
+		if(isset($_GET['tab']))
+		{
+			$data['tab'] = $_GET['tab'];
+		}
+
 		$count = $count->join('patients', 'LEFT')
 			->on('number.patient_id', '=', 'patients.id')
 			->and_where('type_id', '=', '1')
@@ -105,6 +111,7 @@ class Controller_Main extends Controller_BaseLK
 			'total_items' => $count,
 			'items_per_page' => 50,
 			'view' => 'pagination/floating',
+			'type' => 1
 		));
 
 		$count2 = $count2->join('patients', 'LEFT')
@@ -117,6 +124,7 @@ class Controller_Main extends Controller_BaseLK
 			'total_items' => $count2,
 			'items_per_page' => 50,
 			'view' => 'pagination/floating',
+			'type' => 2
 		));
 
 		$numbers = $numbers->join('patients', 'LEFT')
@@ -144,6 +152,7 @@ class Controller_Main extends Controller_BaseLK
 		$view->numbers = $numbers->find_all();
 		$view->numbers2 = $numbers2->find_all();
 		$view->data = $data;
+		$view->tab = $data['tab'];
 		$view->statuses = $statuses;
 
 		$this->template->content = $view->render();

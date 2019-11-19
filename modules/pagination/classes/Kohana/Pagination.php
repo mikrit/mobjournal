@@ -18,6 +18,7 @@ class Kohana_Pagination {
 		'view'              => 'pagination/basic',
 		'auto_hide'         => TRUE,
 		'first_page_in_url' => FALSE,
+		'type' => 1
 	);
 
 	// Current page number
@@ -52,6 +53,8 @@ class Kohana_Pagination {
 
 	// Query offset
 	protected $offset;
+
+	protected $type;
 
 	/**
 	 * Creates a new Pagination object.
@@ -170,6 +173,7 @@ class Kohana_Pagination {
 			$this->first_page         = ($this->current_page === 1) ? FALSE : 1;
 			$this->last_page          = ($this->current_page >= $this->total_pages) ? FALSE : $this->total_pages;
 			$this->offset             = (int) (($this->current_page - 1) * $this->items_per_page);
+			$this->type             = (int) $this->config['type'];
 		}
 
 		// Chainable method
@@ -196,7 +200,7 @@ class Kohana_Pagination {
 		switch ($this->config['current_page']['source'])
 		{
 			case 'query_string':
-				return URL::site(Request::current()->uri()).URL::query(array($this->config['current_page']['key'] => $page));
+				return URL::site(Request::current()->uri()).URL::query(array('tab' => $this->type, $this->config['current_page']['key'] => $page));
 
 			case 'route':
 				return URL::site(Request::current()->uri(array($this->config['current_page']['key'] => $page))).URL::query();
